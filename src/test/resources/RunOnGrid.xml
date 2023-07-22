@@ -1,0 +1,31 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="Regression on Sauce Demo" parallel="tests" thread-count="3">
+    <parameter name="appURL" value="https://www.saucedemo.com/inventory.html"/>
+    <parameter name="seleniumComp" value="GRID" />
+
+    <listeners>
+        <listener class-name="commons.MethodListener"/>
+        <listener class-name="reportConfig.ExtentTestListener"/>
+    </listeners>
+
+    <test name="Run on Chrome">
+        <parameter name="osName" value="Windows" />
+        <parameter name="browserName" value="Chrome"/>
+        <parameter name="IP" value="192.168.0.105" />
+        <parameter name="port" value="6666" />
+        <classes>
+            <class name="com.sauce.demo.Level_17_Sort_Grid"/>
+        </classes>
+    </test>
+
+    <test name="Run on Firefox">
+        <parameter name="osName" value="Windows" />
+        <parameter name="browserName" value="Firefox"/>
+        <parameter name="IP" value="192.168.0.105" />
+        <parameter name="port" value="6666" />
+        <classes>
+            <class name="com.sauce.demo.Level_17_Sort_Grid"/>
+        </classes>
+    </test>
+</suite>
