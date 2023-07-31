@@ -1,0 +1,86 @@
+[
+  {
+    "sectionName": "Servicing at Sytner",
+    "items": [
+      {
+        "name": "Service, MOT & Repair",
+        "slug": "service-parts-and-repair"
+      },
+      {
+        "name": "Protection Services",
+        "slug": "finance/protect"
+      },
+      {
+        "name": "Business Users",
+        "slug": "business-users"
+      }
+    ]
+  },
+  {
+    "sectionName": "Explore",
+    "items": [
+      {
+        "name": "Value my Vehicle",
+        "slug": "value-your-car"
+      },
+      {
+        "name": "Electric Vehicles",
+        "slug": "electric-vehicles"
+      },
+      {
+        "name": "Finance",
+        "slug": "finance"
+      },
+      {
+        "name": "Motability",
+        "slug": "motability"
+      }
+    ]
+  },
+  {
+    "sectionName": "Company",
+    "items": [
+      {
+        "name": "About Us",
+        "slug": "about-us"
+      },
+      {
+        "name": "News",
+        "slug": "news"
+      },
+      {
+        "name": "Careers",
+        "slug": "https://jobs.sytner.co.uk/jobs/"
+      },
+      {
+        "name": "Sustainability",
+        "slug": "sustainability"
+      },
+      {
+        "name": "Goodwood 2023",
+        "slug": "goodwood-2023"
+      },
+      {
+        "name": "Latest News",
+        "slug": "news"
+      }
+    ]
+  },
+  {
+    "sectionName": "Contact & Support",
+    "items": [
+      {
+        "name": "Our Locations",
+        "slug": "dealerships"
+      },
+      {
+        "name": "Customer Services",
+        "slug": "customer-service"
+      },
+      {
+        "name": "Customer Support",
+        "slug": "customer-service/customer-support"
+      }
+    ]
+  }
+]

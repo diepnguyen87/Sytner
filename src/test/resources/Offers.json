@@ -1,0 +1,38 @@
+[
+  {
+    "name": "New Audi Offers",
+    "slug": "audi/new-offers"
+  },
+  {
+    "name": "New BMW Offers",
+    "slug": "bmw/new-offers"
+  },
+  {
+    "name": "New Jaguar Offers",
+    "slug": "jaguar/new-offers"
+  },
+  {
+    "name": "New Land Rover Offers",
+    "slug": "landrover/new-offers"
+  },
+  {
+    "name": "New Mercedes-Benz Offers",
+    "slug": "mercedes-benz/new-offers/mercedes-benz-online-showroom"
+  },
+  {
+    "name": "New SEAT Offers",
+    "slug": "seat/new-offers"
+  },
+  {
+    "name": "New SKODA Offers",
+    "slug": "skoda/new-offers"
+  },
+  {
+    "name": "New Volkswagen Offers",
+    "slug": "volkswagen/new-offers"
+  },
+  {
+    "name": "New Volkswagen Commercial Offers",
+    "slug": "volkswagen-commercial/new-offers"
+  }
+]

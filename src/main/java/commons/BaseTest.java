@@ -4,57 +4,69 @@ import environmentFactory.*;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Optional;
+import org.testng.annotations.Parameters;
+import pageObjects.HomePageObject;
+import pageObjects.PageGeneratorManager;
 
 import java.time.Duration;
 
 public class BaseTest {
 
+    @Parameters({"seleniumComp", "IP", "port", "osName", "osVersion", "browserName"})
+    @BeforeTest
+    public void beforeTest(String seleniumComp, @Optional String IP, @Optional String port, @Optional String osName, @Optional String osVersion, String browserName) {
+        driver = getBrowserDriverAndOpenHomePage(seleniumComp, IP, port, osName, osVersion, browserName);
+        homePage = PageGeneratorManager.getHomePageObject(driver);
+        homePage.acceptAllCookies();
+    }
+
     public BaseTest() {
-        tDriver = new ThreadLocal<WebDriver>();
         this.log = LogFactory.getLog(getClass());
         longTimeout = GlobalContants.LONG_TIMEOUT;
         appURL = getURLByEnvironmentName();
     }
 
     public WebDriver getDriver() {
-        return tDriver.get();
+        return driver;
     }
+
     protected WebDriver getBrowserDriverAndOpenHomePage(String seleniumComp, String IP, String port, String osName, String osVerion, String browserName) {
 
         SeleniumComp type = SeleniumComp.valueOf(seleniumComp.toUpperCase());
         switch (type) {
             case LOCAL:
-                tDriver.set(new LocalFactory(appURL, browserName).createDriver());
+                driver = new LocalFactory(appURL, browserName).createDriver();
                 break;
             case GRID:
-                tDriver.set(new GridFactory(appURL, osName, browserName, IP, port).createDriver());
+                driver = new GridFactory(appURL, osName, browserName, IP, port).createDriver();
                 break;
             case BROWSER_STACK:
-                tDriver.set(new BrowserStackFactory(appURL, osName, osVerion, browserName).createDriver());
+                driver = new BrowserStackFactory(appURL, osName, osVerion, browserName).createDriver();
                 break;
             case SAUCE_LAB:
-                tDriver.set(new SauceLabFactory(appURL, osName, browserName).createDriver());
+                driver = new SauceLabFactory(appURL, osName, browserName).createDriver();
                 break;
             case CROSS_BROWSER:
                 /* TO DO */
                 break;
             case LAMBDA:
-               tDriver.set(new LambdaFactory(appURL, osName, browserName).createDriver());
+                driver = new LambdaFactory(appURL, osName, browserName).createDriver();
                 break;
             default:
                 throw new RuntimeException("Loi default day ne");
         }
 
-        getDriver().manage().timeouts().implicitlyWait(longTimeout);
-        getDriver().manage().window().maximize();
-        getDriver().get(appURL);
-        return getDriver();
+        driver.manage().timeouts().implicitlyWait(longTimeout);
+        driver.manage().window().maximize();
+        driver.get(appURL);
+        return driver;
     }
 
     private String getURLByEnvironmentName() {
         String environmentName = System.getProperty("env");
-        //String environmentName = "Dev";
         EnvironmentList env = EnvironmentList.valueOf(environmentName.toUpperCase());
         String url = null;
 
@@ -78,18 +90,18 @@ public class BaseTest {
         return url;
     }
 
-    @AfterClass(alwaysRun = true)
-    public void afterClass() {
-        if (getDriver() != null) {
-            System.out.println("driver closed: " + tDriver.get());
-            getDriver().quit();
+    @AfterTest(alwaysRun = true)
+    public void afterTest() {
+        if (driver != null) {
+            driver.quit();
         }
     }
 
-    private ThreadLocal<WebDriver> tDriver;
+    protected WebDriver driver;
     protected final Log log;
     private Duration longTimeout;
     protected String appURL;
 
     private String projectPath = GlobalContants.PROJECT_PATH;
+    protected HomePageObject homePage;
 }

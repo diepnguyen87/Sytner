@@ -9,17 +9,21 @@ import org.aeonbits.owner.ConfigFactory;
 @Config.Sources({"file:src/main/java/commons/GlobalContanst.properties"})
 public interface GlobalContants extends Config {
 
+    /* System info */
+    String FILE_SEPARATOR = File.separator;
+    String PROJECT_PATH = System.getProperty("user.dir");
+    String TEST_RESOURCES = PROJECT_PATH.concat(FILE_SEPARATOR)
+            .concat("src").concat(FILE_SEPARATOR)
+            .concat("test").concat(FILE_SEPARATOR)
+            .concat("resources").concat(FILE_SEPARATOR);
+
+    String OS_NAME = System.getProperty("os.name");
+    String JAVA_VERSION = System.getProperty("java.version");
+
     /* App info */
     GlobalContants GC_INSTANCE = ConfigFactory.create(GlobalContants.class);
     Duration LONG_TIMEOUT = Duration.ofSeconds(Long.parseLong(GC_INSTANCE.getLongTimeout()));
     Duration SHORT_TIMEOUT = Duration.ofSeconds(Long.parseLong(GC_INSTANCE.getShortTimeout()));
-
-    /* System info */
-    String PROJECT_PATH = System.getProperty("user.dir");
-    String OS_NAME = System.getProperty("os.name");
-    String JAVA_VERSION = System.getProperty("java.version");
-    String FILE_SEPARATOR = File.separator;
-
     String UPLOAD_PATH = PROJECT_PATH.concat(FILE_SEPARATOR).concat("UploadFiles").concat(FILE_SEPARATOR);
     String DOWNLOAD_PATH = PROJECT_PATH.concat(FILE_SEPARATOR).concat("DownloadFiles").concat(FILE_SEPARATOR);
 
@@ -27,12 +31,13 @@ public interface GlobalContants extends Config {
     String EXTENT_PATH = getAbsolutatePathByOS("htmlExtent");
     String ALLURE_PATH = getAbsolutatePathByOS("htmlAllure");
     String BROWSER_DRIVER_LOG = getAbsolutatePathByOS("BrowserDriverLogs");
-    String ACCOUNT_DATA_JSON = getAbsolutatePathByOS("src").concat(FILE_SEPARATOR)
-            .concat("main").concat(FILE_SEPARATOR)
-            .concat("java").concat(FILE_SEPARATOR)
-            .concat("data").concat(FILE_SEPARATOR)
-            .concat("nopcommerce").concat(FILE_SEPARATOR)
-            .concat("AccountData.json");
+    String MENU_ITEMS_DATA_JSON = TEST_RESOURCES.concat("MenuItem.json");
+    String CAR_BRANDS_DATA_JSON = TEST_RESOURCES.concat("CarBrands.json");
+    String BRANDS_DATA_JSON = TEST_RESOURCES.concat("GeneralBrands.json");
+    String OFFERS_DATA_JSON = TEST_RESOURCES.concat("Offers.json");
+    String ARTICLES_DATA_JSON = TEST_RESOURCES.concat("SellYourCarArticles.json");
+    String SERVICES_DATA_JSON = TEST_RESOURCES.concat("Services.json");
+    String FEATURED_NEW_CAR_OFFERS_DATA_JSON = TEST_RESOURCES.concat("FeaturedNewCarOffers.json");
 
     static String getAbsolutatePathByOS(String folderName) {
         return PROJECT_PATH.concat(FILE_SEPARATOR).concat(folderName).concat(FILE_SEPARATOR);
@@ -93,5 +98,14 @@ public interface GlobalContants extends Config {
     /* Webpage Slugs*/
     @Key("About_US")
     String getAboutUsSlug();
+
+    @Key("News")
+    String getNewsSlug();
+
+    @Key("Customer_Services")
+    String getCustomerServicesSlug();
+
+    @Key("Careers")
+    String getCareersSlug();
 
 }

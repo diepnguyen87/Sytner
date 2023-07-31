@@ -3,24 +3,29 @@
 <suite name="Regression on Sytner" parallel="tests" thread-count="2">
     <parameter name="seleniumComp" value="Local" />
 
-  <!--  <listeners>
-        <listener class-name="commons.MethodListener" />
+    <listeners>
         <listener class-name="org.uncommons.reportng.HTMLReporter" />
         <listener class-name="reportConfig.ReportNGListener" />
-        <listener class-name="reportConfig.ExtentTestListener"/>
-    </listeners>-->
+    </listeners>
+
+    <!--<test name="Run on Chrome" >
+        <parameter name="browserName" value="CHROME"/>
+        <classes>
+            <class name="homePage.Header_001" />
+        </classes>
+    </test>-->
 
     <test name="Run on Chrome" >
         <parameter name="browserName" value="CHROME"/>
         <classes>
-            <class name="homepage.MenuItem_001" />
+            <class name="homePage.MainContent_003_Sections" />
         </classes>
     </test>
 
-    <test name="Run on Firefox" >
+   <!-- <test name="Run on Firefox" >
         <parameter name="browserName" value="FIREFOX"/>
         <classes>
-            <class name="homepage.MenuItem_001" />
+            <class name="homePage.MainContent_002_JumpPoints" />
         </classes>
-    </test>
+    </test>-->
 </suite>

@@ -1,0 +1,102 @@
+[
+  {
+    "name": "Alpina",
+    "slug": "bmw/alpina"
+  },
+  {
+    "name": "AMG",
+    "slug": "mercedes-benz/range/mercedes-amg"
+  },
+  {
+    "name": "Aston Martin",
+    "slug": "aston-martin"
+  },
+  {
+    "name": "Audi",
+    "slug": "audi"
+  },
+  {
+    "name": "Bentley",
+    "slug": "bentley"
+  },
+  {
+    "name": "BMW",
+    "slug": "bmw"
+  },
+  {
+    "name": "Bugatti",
+    "slug": "bugatti"
+  },
+  {
+    "name": "Ferrari",
+    "slug": "ferrari"
+  },
+  {
+    "name": "Jaguar",
+    "slug": "jaguar"
+  },
+  {
+    "name": "Lamborghini",
+    "slug": "lamborghini"
+  },
+  {
+    "name": "Land Rover",
+    "slug": "landrover"
+  },
+  {
+    "name": "Maserati",
+    "slug": "maserati"
+  },
+  {
+    "name": "Mercedes-Benz",
+    "slug": "mercedes-benz"
+  },
+  {
+    "name": "McLaren",
+    "slug": "mclaren"
+  },
+  {
+    "name": "MINI",
+    "slug": "mini"
+  },
+  {
+    "name": "Pagani",
+    "slug": "pagani"
+  },
+  {
+    "name": "Porsche",
+    "slug": "porsche"
+  },
+  {
+    "name": "Rolls Royce",
+    "slug": "rolls-royce"
+  },
+  {
+    "name": "SEAT",
+    "slug": "seat"
+  },
+  {
+    "name": "Škoda",
+    "slug": "skoda"
+  },
+  {
+    "name": "smart",
+    "slug": "smart"
+  },
+  {
+    "name": "Volkswagen",
+    "slug": "volkswagen"
+  },
+  {
+    "name": "Volkswagen Commercial",
+    "slug": "volkswagen-commercial"
+  },
+  {
+    "name": "Sytner Select",
+    "slug": "sytner-select"
+  },
+  {
+    "name": "CarShop",
+    "slug": "carshop"
+  }
+]

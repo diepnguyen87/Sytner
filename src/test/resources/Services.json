@@ -1,0 +1,20 @@
+[
+  {
+    "title": "Service, MOT & Repair",
+    "content": "Get the level of service you deserve. \nMaintain your vehicle with our manufacturer trained staff.",
+    "btn": "View service options",
+    "slug": "service-parts-and-repair/"
+  },
+  {
+    "title": "SytnerDrive",
+    "content": "If you've had an accident that isn't your fault, Sytner can provide you with a similar car while yours is being repaired, at no cost to yourself. Subject to terms.",
+    "btn": "Find out more ",
+    "slug": "service-parts-and-repair/sytnerdrive"
+  },
+  {
+    "title": "Our dealerships",
+    "content": "Find your most convenient location from our nationwide network of state of the art dealerships.",
+    "btn": "Find your nearest dealership",
+    "slug": "dealerships"
+  }
+]
