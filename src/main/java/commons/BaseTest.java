@@ -8,7 +8,7 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
-import pageObjects.HomePageObject;
+import pageObjects.HomePage;
 import pageObjects.PageGeneratorManager;
 
 import java.time.Duration;
@@ -103,5 +103,5 @@ public class BaseTest {
     protected String appURL;
 
     private String projectPath = GlobalContants.PROJECT_PATH;
-    protected HomePageObject homePage;
+    protected HomePage homePage;
 }

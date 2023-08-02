@@ -5,6 +5,9 @@ import utilities.DataObjectBuilder;
 import utilities.model.*;
 import org.testng.annotations.DataProvider;
 
+import java.util.Arrays;
+import java.util.stream.Collectors;
+
 public class DataController {
 
     @DataProvider(name = "menuItems")
@@ -29,17 +32,28 @@ public class DataController {
     }
 
     @DataProvider(name = "articles")
-    public static Article[] articleDataSet(){
+    public static Article[] articleDataSet() {
         return DataObjectBuilder.buildDataObject(GlobalContants.ARTICLES_DATA_JSON, Article[].class);
     }
 
     @DataProvider(name = "services")
-    public static Service[] serviceDataSet(){
+    public static Service[] serviceDataSet() {
         return DataObjectBuilder.buildDataObject(GlobalContants.SERVICES_DATA_JSON, Service[].class);
     }
 
     @DataProvider(name = "featuredNewCarOffers")
-    public static FeaturedNewCarOffers[] featuredNewCarOfferDataSet(){
+    public static FeaturedNewCarOffers[] featuredNewCarOfferDataSet() {
         return DataObjectBuilder.buildDataObject(GlobalContants.FEATURED_NEW_CAR_OFFERS_DATA_JSON, FeaturedNewCarOffers[].class);
+    }
+
+    @DataProvider(name = "brandMenuLinks")
+    public static String[] brandMenuLinkDataSet(String brandName) {
+        BrandMenuLinks[] brandMenuLinks = DataObjectBuilder.buildDataObject(GlobalContants.BRAND_MENU_LINKS_HEADER_DATA_JSON, BrandMenuLinks[].class);
+        return Arrays.stream(brandMenuLinks).map(row -> {
+            if (row.getBrand().equalsIgnoreCase(brandName)) {
+                return row.getMenuLinks();
+            }
+            return null;
+        }).collect(Collectors.toList()).get(0);
     }
 }

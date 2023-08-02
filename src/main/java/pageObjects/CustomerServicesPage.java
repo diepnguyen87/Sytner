@@ -3,9 +3,9 @@ package pageObjects;
 import commons.BasePage;
 import org.openqa.selenium.WebDriver;
 
-public class CustomerServicesPageObject extends BasePage {
+public class CustomerServicesPage extends BasePage {
 
-    public CustomerServicesPageObject(WebDriver driver) {
+    public CustomerServicesPage(WebDriver driver) {
         super(driver);
     }
 

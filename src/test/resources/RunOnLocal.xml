@@ -8,24 +8,24 @@
         <listener class-name="reportConfig.ReportNGListener" />
     </listeners>
 
-    <!--<test name="Run on Chrome" >
+   <!-- <test name="Run on Chrome" >
         <parameter name="browserName" value="CHROME"/>
         <classes>
-            <class name="homePage.Header_001" />
+            <class name="homePage.HomePage_001_Header" />
         </classes>
     </test>-->
 
     <test name="Run on Chrome" >
         <parameter name="browserName" value="CHROME"/>
         <classes>
-            <class name="homePage.MainContent_003_Sections" />
+            <class name="alpinaPage.Header_001" />
         </classes>
     </test>
 
-   <!-- <test name="Run on Firefox" >
+    <test name="Run on Firefox" >
         <parameter name="browserName" value="FIREFOX"/>
         <classes>
-            <class name="homePage.MainContent_002_JumpPoints" />
+            <class name="alpinaPage.Header_001" />
         </classes>
-    </test>-->
+    </test>
 </suite>

@@ -6,13 +6,13 @@ import data.DataController;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pageObjects.SearchPageObject;
+import pageObjects.SearchPage;
 import utilities.model.FeaturedNewCarOffers;
 
-public class MainContent_003_Sections extends BaseTest {
+public class HomePage_003_MainContent_Sections extends BaseTest {
 
     @Test
-    public void MainContent_001_FeatureNewCarOffers_Section() {
+    public void MainContent_001_Section_FeatureNewCarOffers() {
         String parentWindow = homePage.getWindowHandle();
         homePage.moveToSection("Featured New Car Offers");
         for (FeaturedNewCarOffers car : DataController.featuredNewCarOfferDataSet()) {
@@ -44,6 +44,6 @@ public class MainContent_003_Sections extends BaseTest {
     }
 
     private WebDriver driver;
-    private SearchPageObject searchPage;
+    private SearchPage searchPage;
     private BasePage basePage;
 }

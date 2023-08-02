@@ -4,9 +4,9 @@ import UI.page.SearchPageUI;
 import commons.BasePage;
 import org.openqa.selenium.WebDriver;
 
-public class SearchPageObject extends BasePage {
+public class SearchPage extends BasePage {
 
-    public SearchPageObject(WebDriver driver) {
+    public SearchPage(WebDriver driver) {
         super(driver);
     }
 

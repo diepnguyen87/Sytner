@@ -38,6 +38,7 @@ public interface GlobalContants extends Config {
     String ARTICLES_DATA_JSON = TEST_RESOURCES.concat("SellYourCarArticles.json");
     String SERVICES_DATA_JSON = TEST_RESOURCES.concat("Services.json");
     String FEATURED_NEW_CAR_OFFERS_DATA_JSON = TEST_RESOURCES.concat("FeaturedNewCarOffers.json");
+    String BRAND_MENU_LINKS_HEADER_DATA_JSON = TEST_RESOURCES.concat("BrandMenuLinks.json");
 
     static String getAbsolutatePathByOS(String folderName) {
         return PROJECT_PATH.concat(FILE_SEPARATOR).concat(folderName).concat(FILE_SEPARATOR);

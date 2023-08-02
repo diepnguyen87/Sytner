@@ -3,9 +3,9 @@ package pageObjects;
 import commons.BasePage;
 import org.openqa.selenium.WebDriver;
 
-public class NewsPageObject extends BasePage {
+public class NewsPage extends BasePage {
 
-    public NewsPageObject(WebDriver driver) {
+    public NewsPage(WebDriver driver) {
         super(driver);
     }
 

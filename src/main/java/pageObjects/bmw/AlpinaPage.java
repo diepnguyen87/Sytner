@@ -1,0 +1,15 @@
+package pageObjects.bmw;
+
+import org.openqa.selenium.WebDriver;
+
+public class AlpinaPage extends BMWPage{
+
+    public AlpinaPage(){
+
+    }
+    public AlpinaPage(WebDriver driver){
+        super(driver);
+    }
+
+
+}

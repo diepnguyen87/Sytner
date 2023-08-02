@@ -1,148 +1,175 @@
 package components.global;
 
-import UI.comp.SytnerHeaderCompUI;
 import commons.BasePage;
-import org.openqa.selenium.WebDriver;
 import pageObjects.PageGeneratorManager;
-import pageObjects.SearchPageObject;
+import pageObjects.SearchPage;
 
 public class SytnerHeaderComp extends BasePage {
-    private WebDriver driver;
-    public static SytnerHeaderComp sytnerHeaderComp;
 
-    public SytnerHeaderComp(WebDriver driver) {
-        super(driver);
-        this.driver = driver;
+    private String SYTNER_HEADER = "xpath=//img[@alt='Sytner Group Logo']/ancestor::div[contains(@class, 'navbar-header--centered')]";
+    private String SYTNER_LOGO = "xpath=//img[@alt='Sytner Group Logo']/parent::a";
+    private String SEARCH_ICON = "xpath=//button[@title='Open search' and contains(@id, 'desktop')]";
+    private String SEARCH_INPUT_ICON = "xpath=//div[contains(@id, 'search-desktop') and @aria-hidden='false']//label[contains(@id,'search-input-desktop')]/following-sibling::*[name()='svg']";
+    private String SEARCH_TEXTBOX = "css=input[id*='search-input-desktop']";
+    private String SEARCH_BUTTON = "css=button[id*='search-input-desktop']";
+    private String SEARCH_CLOSE_ICON = "css=button[title='Close search'][id*='desktop']";
+    private String LOCATION_ICON = "css=a[title='Locations']";
+    private String DYNAMIC_OPEN_CLOSE_ICON_MENU_ITEMS = "xpath=//div[contains(@class, 'navbar-header')]/button[@title='%s']";
+    private String POPUP_MENU_ITEMS = "xpath=//header[contains(@class,'Navbar_is-open')]";
+    private String DYNAMIC_TAB_BY_NAME = "xpath=//button[@role='tab' and text()='%s']";
+    private String DYNAMIC_MENU_ITEMS_BRAND_OFFER_BY_NAME = "xpath=//ul[@role='tablist']/following-sibling::div//a[text()='%s']";
+    //private String DYNAMIC_SECTION_NAME_MENU_ITEMS = "xpath=//h6[text()='%s']";
+    private String DYNAMIC_MENU_ITEM_BY_SECTION_NAME = "xpath=//h6[text()='%s']/following-sibling::ul//a[text()='%s']";
+
+    public boolean isSytnerLogoDisplayed() {
+        waitForElementVisible(SYTNER_LOGO);
+        return isElementDisplayedInDOM(SYTNER_LOGO);
+    }
+
+    public boolean isOpenMenuIconDisplayed(String buttonTitle) {
+        waitForElementVisible(DYNAMIC_OPEN_CLOSE_ICON_MENU_ITEMS, buttonTitle);
+        return isElementDisplayedInDOM(DYNAMIC_OPEN_CLOSE_ICON_MENU_ITEMS, buttonTitle);
     }
 
     public void openCloseMenuItems(String iconName) {
-        waitForElementClickable(SytnerHeaderCompUI.MENU_ITEMS_OPEN_CLOSE_ICON, iconName);
-        clickToElement(SytnerHeaderCompUI.MENU_ITEMS_OPEN_CLOSE_ICON, iconName);
+        waitForElementClickable(DYNAMIC_OPEN_CLOSE_ICON_MENU_ITEMS, iconName);
+        clickToElement(DYNAMIC_OPEN_CLOSE_ICON_MENU_ITEMS, iconName);
     }
 
     public boolean isMenuItemPopupDisplayed() {
-        waitForElementVisible(SytnerHeaderCompUI.MENU_ITEMS_POPUP);
-        return isElementDisplayedInDOM(SytnerHeaderCompUI.MENU_ITEMS_POPUP);
+        waitForElementVisible(POPUP_MENU_ITEMS);
+        return isElementDisplayedInDOM(POPUP_MENU_ITEMS);
     }
 
     public boolean isMenuItemPopupUndisplayed() {
-        return isElementUnDisplayed(SytnerHeaderCompUI.MENU_ITEMS_POPUP);
+        return isElementUnDisplayed(POPUP_MENU_ITEMS);
     }
 
     public void clickMenuItemsBySectionAndName(String sectionName, String hyperlinkName) {
-        waitForElementClickable(SytnerHeaderCompUI.DYNAMIC_MENU_ITEM_BY_SECTION_NAME, sectionName, hyperlinkName);
-        clickToElement(SytnerHeaderCompUI.DYNAMIC_MENU_ITEM_BY_SECTION_NAME, sectionName, hyperlinkName);
+        waitForElementClickable(DYNAMIC_MENU_ITEM_BY_SECTION_NAME, sectionName, hyperlinkName);
+        clickToElement(DYNAMIC_MENU_ITEM_BY_SECTION_NAME, sectionName, hyperlinkName);
         sleepInSecond(5);
     }
 
     public void clickTabByName(String tabName) {
-        waitForElementClickable(SytnerHeaderCompUI.DYNAMIC_TAB, tabName);
-        clickToElement(SytnerHeaderCompUI.DYNAMIC_TAB, tabName);
+        waitForElementClickable(DYNAMIC_TAB_BY_NAME, tabName);
+        clickToElement(DYNAMIC_TAB_BY_NAME, tabName);
     }
 
-    public void clickBrandOfferByName(String brandName) {
-        waitForElementClickable(SytnerHeaderCompUI.DYNAMIC_BRAND_BY_NAME, brandName);
-        clickToElement(SytnerHeaderCompUI.DYNAMIC_BRAND_BY_NAME, brandName);
+    public void clickMenuItemAtTabBrandOfferByName(String brandOfferName) {
+        waitForElementClickable(DYNAMIC_MENU_ITEMS_BRAND_OFFER_BY_NAME, brandOfferName);
+        clickToElement(DYNAMIC_MENU_ITEMS_BRAND_OFFER_BY_NAME, brandOfferName);
         sleepInSecond(5);
     }
 
     public void clickSytnerIcon() {
-        waitForElementClickable(SytnerHeaderCompUI.SYTNER_LOGO);
-        clickToElement(SytnerHeaderCompUI.SYTNER_LOGO);
+        waitForElementClickable(SYTNER_LOGO);
+        clickToElement(SYTNER_LOGO);
+
     }
 
     public boolean isSearchIconUndisplayed() {
-        return isElementUnDisplayed(SytnerHeaderCompUI.SEARCH_ICON);
+        return isElementUnDisplayed(SEARCH_ICON);
     }
 
     public boolean isSearchIconDisplayed() {
-        waitForElementVisible(SytnerHeaderCompUI.SEARCH_ICON);
-        return isElementDisplayedInDOM(SytnerHeaderCompUI.SEARCH_ICON);
+        waitForElementVisible(SEARCH_ICON);
+        return isElementDisplayedInDOM(SEARCH_ICON);
     }
 
     public boolean isLocationIconUndisplayed() {
-        return isElementUnDisplayed(SytnerHeaderCompUI.LOCATION_ICON);
+        return isElementUnDisplayed(LOCATION_ICON);
     }
 
     public boolean isLocationIconDisplayed() {
-        waitForElementVisible(SytnerHeaderCompUI.LOCATION_ICON);
-        return isElementDisplayedInDOM(SytnerHeaderCompUI.LOCATION_ICON);
+        waitForElementVisible(LOCATION_ICON);
+        return isElementDisplayedInDOM(LOCATION_ICON);
     }
 
-    public boolean isNavbarHeaderUncentered() {
-        return isElementUnDisplayed(SytnerHeaderCompUI.NAVBAR_HEADER);
+    public boolean isSytnerHeaderUncentered() {
+        return isElementUnDisplayed(SYTNER_HEADER);
     }
 
-    public boolean isNavbarHeaderCentered() {
-        waitForElementVisible(SytnerHeaderCompUI.NAVBAR_HEADER);
-        return isElementDisplayedInDOM(SytnerHeaderCompUI.NAVBAR_HEADER);
+    public boolean isSytnerHeaderCentered() {
+        waitForElementVisible(SYTNER_HEADER);
+        return isElementDisplayedInDOM(SYTNER_HEADER);
     }
 
     public boolean isSearchInputIconUndisplayed() {
-        return isElementUnDisplayed(SytnerHeaderCompUI.SEARCH_INPUT_ICON);
+        return isElementUnDisplayed(SEARCH_INPUT_ICON);
     }
 
     public boolean isSearchTextboxUndisplayed() {
-        return isElementUnDisplayed(SytnerHeaderCompUI.SEARCH_TEXTBOX);
+        return isElementUnDisplayed(SEARCH_TEXTBOX);
     }
 
     public boolean isSearchButtonUndisplayed() {
-        return isElementUnDisplayed(SytnerHeaderCompUI.SEARCH_BUTTON);
+        return isElementUnDisplayed(SEARCH_BUTTON);
     }
 
     public boolean isSearchCloseIconUndisplayed() {
-        return isElementUnDisplayed(SytnerHeaderCompUI.SEARCH_CLOSE_ICON);
+        return isElementUnDisplayed(SEARCH_CLOSE_ICON);
     }
 
     public void clickSearchIcon() {
-        waitForElementClickable(SytnerHeaderCompUI.SEARCH_ICON);
-        clickToElement(SytnerHeaderCompUI.SEARCH_ICON);
+        waitForElementClickable(SEARCH_ICON);
+        clickToElement(SEARCH_ICON);
     }
 
     public boolean isSearchInputIconDisplayed() {
-        waitForElementVisible(SytnerHeaderCompUI.SEARCH_INPUT_ICON);
-        return isElementDisplayedInDOM(SytnerHeaderCompUI.SEARCH_INPUT_ICON);
+        waitForElementVisible(SEARCH_INPUT_ICON);
+        return isElementDisplayedInDOM(SEARCH_INPUT_ICON);
     }
 
     public boolean isSearchTextboxDisplayed() {
-        waitForElementVisible(SytnerHeaderCompUI.SEARCH_TEXTBOX);
-        return isElementDisplayedInDOM(SytnerHeaderCompUI.SEARCH_TEXTBOX);
+        waitForElementVisible(SEARCH_TEXTBOX);
+        return isElementDisplayedInDOM(SEARCH_TEXTBOX);
     }
 
     public boolean isSearchButtonDisplayed() {
-        waitForElementVisible(SytnerHeaderCompUI.SEARCH_BUTTON);
-        return isElementDisplayedInDOM(SytnerHeaderCompUI.SEARCH_BUTTON);
+        waitForElementVisible(SEARCH_BUTTON);
+        return isElementDisplayedInDOM(SEARCH_BUTTON);
     }
 
     public boolean isSearchCloseIconDisplayed() {
-        waitForElementVisible(SytnerHeaderCompUI.SEARCH_CLOSE_ICON);
-        return isElementDisplayedInDOM(SytnerHeaderCompUI.SEARCH_CLOSE_ICON);
+        waitForElementVisible(SEARCH_CLOSE_ICON);
+        return isElementDisplayedInDOM(SEARCH_CLOSE_ICON);
     }
 
     public void inputSearchTextbox(String searchValue) {
-        waitForElementVisible(SytnerHeaderCompUI.SEARCH_TEXTBOX);
-        sendkeyToElement(SytnerHeaderCompUI.SEARCH_TEXTBOX, searchValue);
+        waitForElementVisible(SEARCH_TEXTBOX);
+        sendkeyToElement(SEARCH_TEXTBOX, searchValue);
         sleepInSecond(1);
     }
 
     public void closeSearchIcon() {
-        waitForElementClickable(SytnerHeaderCompUI.SEARCH_CLOSE_ICON);
-        clickToElement(SytnerHeaderCompUI.SEARCH_CLOSE_ICON);
+        waitForElementClickable(SEARCH_CLOSE_ICON);
+        clickToElement(SEARCH_CLOSE_ICON);
     }
 
     public String getSearchPlaceHolder() {
-        waitForElementVisible(SytnerHeaderCompUI.SEARCH_TEXTBOX);
-        return getAttributeValue(SytnerHeaderCompUI.SEARCH_TEXTBOX, "placeholder");
+        waitForElementVisible(SEARCH_TEXTBOX);
+        return getAttributeValue(SEARCH_TEXTBOX, "placeholder");
     }
 
     public String getSearchValue() {
-        waitForElementVisible(SytnerHeaderCompUI.SEARCH_TEXTBOX);
-        return getAttributeValue(SytnerHeaderCompUI.SEARCH_TEXTBOX, "value");
+        waitForElementVisible(SEARCH_TEXTBOX);
+        return getAttributeValue(SEARCH_TEXTBOX, "value");
     }
 
-    public SearchPageObject clickSearchBtn() {
-        waitForElementClickable(SytnerHeaderCompUI.SEARCH_BUTTON);
-        clickToElement(SytnerHeaderCompUI.SEARCH_BUTTON);
-        return PageGeneratorManager.getSearchPageObject(driver);
+    public SearchPage clickSearchBtn() {
+        waitForElementClickable(SEARCH_BUTTON);
+        clickToElement(SEARCH_BUTTON);
+        return PageGeneratorManager.getSearchPageObject(getDriver());
+    }
+
+    public String getMenuItemTarget(String sectionName, String hyperlinkName) {
+        waitForElementVisible(DYNAMIC_MENU_ITEM_BY_SECTION_NAME, sectionName, hyperlinkName);
+        return getAttributeValue(DYNAMIC_MENU_ITEM_BY_SECTION_NAME, "target", sectionName, hyperlinkName);
+    }
+
+    public String isBrandOfferMenuItemOpennedOnCurrentPage(String hyperlinkName) {
+        waitForElementVisible(DYNAMIC_MENU_ITEMS_BRAND_OFFER_BY_NAME, hyperlinkName);
+        return getAttributeValue(DYNAMIC_MENU_ITEMS_BRAND_OFFER_BY_NAME, "target", hyperlinkName);
     }
 }

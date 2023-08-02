@@ -5,12 +5,12 @@ import data.DataController;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pageObjects.SearchPageObject;
+import pageObjects.SearchPage;
 import utilities.model.Article;
 import utilities.model.Brand;
 import utilities.model.Service;
 
-public class MainContent_002_JumpPoints extends BaseTest {
+public class HomePage_002_MainContent_JumpPoints extends BaseTest {
 
     @Test()
     public void MainContent_001_Jump_Point_OurBrands() {
@@ -66,5 +66,5 @@ public class MainContent_002_JumpPoints extends BaseTest {
     }
 
     private WebDriver driver;
-    private SearchPageObject searchPage;
+    private SearchPage searchPage;
 }

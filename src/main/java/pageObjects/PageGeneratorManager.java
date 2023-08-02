@@ -2,6 +2,7 @@ package pageObjects;
 
 import commons.BasePage;
 import org.openqa.selenium.WebDriver;
+import pageObjects.bmw.AlpinaPage;
 
 public class PageGeneratorManager {
 
@@ -9,27 +10,30 @@ public class PageGeneratorManager {
         return new BasePage(driver);
     }
 
-    public static HomePageObject getHomePageObject(WebDriver driver){
-        return new HomePageObject(driver);
+    public static HomePage getHomePageObject(WebDriver driver){
+        return new HomePage(driver);
     }
 
-    public static AboutUsPageObject getAboutUsPageObject(WebDriver driver){
-        return new AboutUsPageObject(driver);
+    public static AboutUsPage getAboutUsPageObject(WebDriver driver){
+        return new AboutUsPage(driver);
     }
 
-    public static NewsPageObject getNewsPageObject(WebDriver driver){
-        return new NewsPageObject(driver);
+    public static NewsPage getNewsPageObject(WebDriver driver){
+        return new NewsPage(driver);
     }
 
-    public static CareersPageObject getCareersPageObject(WebDriver driver){
-        return new CareersPageObject(driver);
+    public static CareersPage getCareersPageObject(WebDriver driver){
+        return new CareersPage(driver);
     }
 
-    public static CustomerServicesPageObject getCustomerServicesPageObject(WebDriver driver){
-        return new CustomerServicesPageObject(driver);
+    public static CustomerServicesPage getCustomerServicesPageObject(WebDriver driver){
+        return new CustomerServicesPage(driver);
+    }
+    public static SearchPage getSearchPageObject(WebDriver driver){
+        return new SearchPage(driver);
     }
 
-    public static SearchPageObject getSearchPageObject(WebDriver driver){
-        return new SearchPageObject(driver);
+    public static AlpinaPage getAlpinaPage(WebDriver driver){
+        return new AlpinaPage(driver);
     }
 }
