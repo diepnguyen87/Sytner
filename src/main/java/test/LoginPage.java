@@ -3,9 +3,9 @@ package test;
 import org.openqa.selenium.WebDriver;
 
 public class LoginPage extends BaseClass {
+    private int loginVariable;
 
-    public LoginPage(WebDriver driver, int num) {
-        super(driver, num);
-        System.out.println("Login page: " + this);
+    public LoginPage(WebDriver driver) {
+        super(driver);
     }
 }

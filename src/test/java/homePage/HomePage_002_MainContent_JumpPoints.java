@@ -5,7 +5,7 @@ import data.DataController;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pageObjects.SearchPage;
+import pages.SearchPage;
 import utilities.model.Article;
 import utilities.model.Brand;
 import utilities.model.Service;

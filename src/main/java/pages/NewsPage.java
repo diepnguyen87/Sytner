@@ -1,4 +1,4 @@
-package pageObjects;
+package pages;
 
 import commons.BasePage;
 import org.openqa.selenium.WebDriver;

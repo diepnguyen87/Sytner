@@ -9,14 +9,6 @@ public class BrandHeaderComp extends BasePage {
     private String MENU_LINK = "xpath=//header[contains(@id, '%s')]//nav[contains(@id, 'menu-links')]/a[text()='%s']";
     private String OPEN_MENU_ICON = "css=header[id*='%s'] button[title='Open Menu']";
 
-    public BrandHeaderComp(){
-
-    }
-
-    public BrandHeaderComp(WebDriver driver){
-        super(driver);
-    }
-
     public boolean isLogoLinkDisplayed(String brandName) {
         brandName = brandName.toUpperCase();
         waitForElementVisible(LOGO_LINK, brandName);
@@ -27,7 +19,7 @@ public class BrandHeaderComp extends BasePage {
         brandName = brandName.toUpperCase();
         for (String menuLink : menuLinks) {
             waitForElementVisible(MENU_LINK, brandName, menuLink);
-            if(! isElementDisplayedInDOM(MENU_LINK, brandName, menuLink)) return false;
+            if (!isElementDisplayedInDOM(MENU_LINK, brandName, menuLink)) return false;
         }
         return true;
     }
@@ -36,5 +28,11 @@ public class BrandHeaderComp extends BasePage {
         brandName = brandName.toUpperCase();
         waitForElementVisible(OPEN_MENU_ICON, brandName);
         return isElementDisplayedInDOM(OPEN_MENU_ICON, brandName);
+    }
+
+    public void isBrandHeaderDisplayed(String brandName, String[] menuLinks) {
+        isLogoLinkDisplayed(brandName);
+        isMenuLinksDisplayed(brandName, menuLinks);
+        isOpenMenuIconDisplayed(brandName);
     }
 }

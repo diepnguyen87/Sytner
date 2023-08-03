@@ -1,8 +1,9 @@
 package components.global;
 
 import commons.BasePage;
-import pageObjects.PageGeneratorManager;
-import pageObjects.SearchPage;
+import pages.HomePage;
+import pages.PageGeneratorManager;
+import pages.SearchPage;
 
 public class SytnerHeaderComp extends BasePage {
 
@@ -14,11 +15,12 @@ public class SytnerHeaderComp extends BasePage {
     private String SEARCH_BUTTON = "css=button[id*='search-input-desktop']";
     private String SEARCH_CLOSE_ICON = "css=button[title='Close search'][id*='desktop']";
     private String LOCATION_ICON = "css=a[title='Locations']";
-    private String DYNAMIC_OPEN_CLOSE_ICON_MENU_ITEMS = "xpath=//div[contains(@class, 'navbar-header')]/button[@title='%s']";
+    private String OPEN_MENU_ITEM = "xpath=//div[contains(@class, 'navbar-header')]/button[@title='Open Menu']";
+    private String CLOSE_MENU_ITEM = "xpath=//div[contains(@class, 'navbar-header')]/button[@title='Close']";
     private String POPUP_MENU_ITEMS = "xpath=//header[contains(@class,'Navbar_is-open')]";
     private String DYNAMIC_TAB_BY_NAME = "xpath=//button[@role='tab' and text()='%s']";
-    private String DYNAMIC_MENU_ITEMS_BRAND_OFFER_BY_NAME = "xpath=//ul[@role='tablist']/following-sibling::div//a[text()='%s']";
-    //private String DYNAMIC_SECTION_NAME_MENU_ITEMS = "xpath=//h6[text()='%s']";
+    private String DYNAMIC_MENU_ITEMS_BRAND_BY_NAME = "xpath=//button[@role='tab' and text()='Our Brands' and @aria-selected='true']/ancestor::ul[@role='tablist']/following-sibling::div//a[text()='%s']";
+    private String DYNAMIC_MENU_ITEMS_OFFER_BY_NAME = "xpath=//button[@role='tab' and text()='Offers' and @aria-selected='true']/ancestor::ul[@role='tablist']/following-sibling::div//a[text()='%s']";
     private String DYNAMIC_MENU_ITEM_BY_SECTION_NAME = "xpath=//h6[text()='%s']/following-sibling::ul//a[text()='%s']";
 
     public boolean isSytnerLogoDisplayed() {
@@ -26,14 +28,19 @@ public class SytnerHeaderComp extends BasePage {
         return isElementDisplayedInDOM(SYTNER_LOGO);
     }
 
-    public boolean isOpenMenuIconDisplayed(String buttonTitle) {
-        waitForElementVisible(DYNAMIC_OPEN_CLOSE_ICON_MENU_ITEMS, buttonTitle);
-        return isElementDisplayedInDOM(DYNAMIC_OPEN_CLOSE_ICON_MENU_ITEMS, buttonTitle);
+    public boolean isOpenMenuIconDisplayed() {
+        waitForElementVisible(OPEN_MENU_ITEM);
+        return isElementDisplayedInDOM(OPEN_MENU_ITEM);
     }
 
-    public void openCloseMenuItems(String iconName) {
-        waitForElementClickable(DYNAMIC_OPEN_CLOSE_ICON_MENU_ITEMS, iconName);
-        clickToElement(DYNAMIC_OPEN_CLOSE_ICON_MENU_ITEMS, iconName);
+    public void openMenuItem() {
+        waitForElementClickable(OPEN_MENU_ITEM);
+        clickToElement(OPEN_MENU_ITEM);
+    }
+
+    public void closeMenuItem() {
+        waitForElementClickable(CLOSE_MENU_ITEM);
+        clickToElement(CLOSE_MENU_ITEM);
     }
 
     public boolean isMenuItemPopupDisplayed() {
@@ -56,16 +63,22 @@ public class SytnerHeaderComp extends BasePage {
         clickToElement(DYNAMIC_TAB_BY_NAME, tabName);
     }
 
-    public void clickMenuItemAtTabBrandOfferByName(String brandOfferName) {
-        waitForElementClickable(DYNAMIC_MENU_ITEMS_BRAND_OFFER_BY_NAME, brandOfferName);
-        clickToElement(DYNAMIC_MENU_ITEMS_BRAND_OFFER_BY_NAME, brandOfferName);
+    public void clickMenuItemAtTabBrandByName(String brandOfferName) {
+        waitForElementClickable(DYNAMIC_MENU_ITEMS_BRAND_BY_NAME, brandOfferName);
+        clickToElement(DYNAMIC_MENU_ITEMS_BRAND_BY_NAME, brandOfferName);
         sleepInSecond(5);
     }
 
-    public void clickSytnerIcon() {
+    public void clickMenuItemAtTabOfferByName(String brandOfferName) {
+        waitForElementClickable(DYNAMIC_MENU_ITEMS_OFFER_BY_NAME, brandOfferName);
+        clickToElement(DYNAMIC_MENU_ITEMS_OFFER_BY_NAME, brandOfferName);
+        sleepInSecond(5);
+    }
+
+    public HomePage clickSytnerIcon() {
         waitForElementClickable(SYTNER_LOGO);
         clickToElement(SYTNER_LOGO);
-
+        return PageGeneratorManager.getHomePage(getDriver());
     }
 
     public boolean isSearchIconUndisplayed() {
@@ -111,7 +124,7 @@ public class SytnerHeaderComp extends BasePage {
         return isElementUnDisplayed(SEARCH_CLOSE_ICON);
     }
 
-    public void clickSearchIcon() {
+    public void openSearchComponent() {
         waitForElementClickable(SEARCH_ICON);
         clickToElement(SEARCH_ICON);
     }
@@ -142,7 +155,7 @@ public class SytnerHeaderComp extends BasePage {
         sleepInSecond(1);
     }
 
-    public void closeSearchIcon() {
+    public void closeSearchComponent() {
         waitForElementClickable(SEARCH_CLOSE_ICON);
         clickToElement(SEARCH_CLOSE_ICON);
     }
@@ -160,16 +173,64 @@ public class SytnerHeaderComp extends BasePage {
     public SearchPage clickSearchBtn() {
         waitForElementClickable(SEARCH_BUTTON);
         clickToElement(SEARCH_BUTTON);
-        return PageGeneratorManager.getSearchPageObject(getDriver());
+        return PageGeneratorManager.getSearchPage(getDriver());
     }
 
-    public String getMenuItemTarget(String sectionName, String hyperlinkName) {
+    public boolean isSectionMenuItemOpennedOnCurrentPage(String sectionName, String hyperlinkName) {
         waitForElementVisible(DYNAMIC_MENU_ITEM_BY_SECTION_NAME, sectionName, hyperlinkName);
-        return getAttributeValue(DYNAMIC_MENU_ITEM_BY_SECTION_NAME, "target", sectionName, hyperlinkName);
+        String target = getAttributeValue(DYNAMIC_MENU_ITEM_BY_SECTION_NAME, "target", sectionName, hyperlinkName);
+        if (target.isBlank()) {
+            return true;
+        }
+        return false;
     }
 
-    public String isBrandOfferMenuItemOpennedOnCurrentPage(String hyperlinkName) {
-        waitForElementVisible(DYNAMIC_MENU_ITEMS_BRAND_OFFER_BY_NAME, hyperlinkName);
-        return getAttributeValue(DYNAMIC_MENU_ITEMS_BRAND_OFFER_BY_NAME, "target", hyperlinkName);
+    public boolean isBrandMenuItemOpennedOnCurrentPage(String hyperlinkName) {
+        waitForElementVisible(DYNAMIC_MENU_ITEMS_BRAND_BY_NAME, hyperlinkName);
+        String target = getAttributeValue(DYNAMIC_MENU_ITEMS_BRAND_BY_NAME, "target", hyperlinkName);
+        if (target.isBlank()) {
+            return true;
+        }
+        return false;
     }
+
+    public boolean isOfferMenuItemOpennedOnCurrentPage(String hyperlinkName) {
+        waitForElementVisible(DYNAMIC_MENU_ITEMS_OFFER_BY_NAME, hyperlinkName);
+        String target = getAttributeValue(DYNAMIC_MENU_ITEMS_OFFER_BY_NAME, "target", hyperlinkName);
+        if (target.isBlank()) {
+            return true;
+        }
+        return false;
+    }
+
+    public void openBrandPageByName(String brandName) {
+        openMenuItem();
+        clickMenuItemAtTabBrandByName(brandName);
+    }
+
+    public boolean isSytnerHeader_Mode1_Visibility() {
+        if (isSearchIconUndisplayed() && isLocationIconUndisplayed() &&
+                isSytnerLogoDisplayed() && isOpenMenuIconDisplayed() && isSytnerHeaderCentered()) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean isSytnerHeader_Mode2_Visibility_SearchComponentClosed() {
+        if (isSearchInputIconUndisplayed() && isSearchTextboxUndisplayed() && isSearchButtonUndisplayed() && isSearchCloseIconUndisplayed() &&
+                isSytnerLogoDisplayed() && isSearchIconDisplayed() && isLocationIconDisplayed() && isOpenMenuIconDisplayed() && isSytnerHeaderUncentered()) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean isSytnerHeader_Mode2_Visibility_SearchComponentOpened() {
+        if (isSearchIconUndisplayed() && isLocationIconUndisplayed() &&
+                isSearchInputIconDisplayed() && isSearchTextboxDisplayed() && isSearchButtonDisplayed() && isSearchCloseIconDisplayed()) {
+            return true;
+        }
+        return false;
+    }
+
+
 }

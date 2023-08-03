@@ -1,4 +1,4 @@
-package pageObjects.bmw;
+package pages.bmw;
 
 import org.openqa.selenium.WebDriver;
 

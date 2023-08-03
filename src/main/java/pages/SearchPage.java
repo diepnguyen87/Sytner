@@ -1,4 +1,4 @@
-package pageObjects;
+package pages;
 
 import UI.page.SearchPageUI;
 import commons.BasePage;

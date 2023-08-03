@@ -6,7 +6,7 @@ import data.DataController;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pageObjects.SearchPage;
+import pages.SearchPage;
 import utilities.model.FeaturedNewCarOffers;
 
 public class HomePage_003_MainContent_Sections extends BaseTest {

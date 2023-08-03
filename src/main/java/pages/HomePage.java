@@ -1,4 +1,4 @@
-package pageObjects;
+package pages;
 
 import UI.page.HomePageUI;
 import commons.BasePage;
@@ -12,140 +12,17 @@ public class HomePage extends BasePage {
     public HomePage(WebDriver driver) {
         super(driver);
     }
+
     public void acceptAllCookies() {
         waitForElementClickable(HomePageUI.ACCEPT_ALL_COOKIES_BUTTON);
         clickToElement(HomePageUI.ACCEPT_ALL_COOKIES_BUTTON);
         waitForElementInVisibleNotInDOM(HomePageUI.COOKIE_SDK);
     }
 
-    public boolean isSytnerLogoDisplayed() {
-        return getSytnerHeaderComp().isSytnerLogoDisplayed();
-    }
-
-    public boolean isOpenMenuIconDisplayed(String buttonTitle) {
-        return getSytnerHeaderComp().isOpenMenuIconDisplayed(buttonTitle);
-    }
-
-    public void openMenuItems() {
-        getSytnerHeaderComp().openCloseMenuItems("Open Menu");
-    }
-
-    public void closeMenuItems() {
-        getSytnerHeaderComp().openCloseMenuItems("Close");
-    }
-
-    public void clickMenuItemsBySectionAndName(String sectionName, String hyperlinkName) {
-        getSytnerHeaderComp().clickMenuItemsBySectionAndName(sectionName, hyperlinkName);
-    }
-
-    public void selectTabByName(String tabName) {
-        getSytnerHeaderComp().clickTabByName(tabName);
-    }
-
-    public void clickBrandByName(String brandName) {
-        getSytnerHeaderComp().clickMenuItemAtTabBrandOfferByName(brandName);
-    }
-
-    public void clickOfferByName(String offerName) {
-        getSytnerHeaderComp().clickMenuItemAtTabBrandOfferByName(offerName);
-    }
-
-    public boolean isMenuItemPopupDisplayed() {
-        return getSytnerHeaderComp().isMenuItemPopupDisplayed();
-    }
-
-    public boolean isMenuItemPopupUndisplayed() {
-        return getSytnerHeaderComp().isMenuItemPopupUndisplayed();
-    }
-
-    public void clickSytnerIcon() {
-        getSytnerHeaderComp().clickSytnerIcon();
-    }
-
     public void moveToNavigation() {
         waitForElementVisible(HomePageUI.HEADER_NAVIGATION);
         scrollToElementOnDown(HomePageUI.HEADER_NAVIGATION);
         sleepInSecond(5);
-    }
-
-    public boolean isSearchIconUndisplayed() {
-        return getSytnerHeaderComp().isSearchIconUndisplayed();
-    }
-
-    public boolean isSearchIconDisplayed() {
-        return getSytnerHeaderComp().isSearchIconDisplayed();
-    }
-
-    public boolean isLocationIconUndisplayed() {
-        return getSytnerHeaderComp().isLocationIconUndisplayed();
-    }
-
-    public boolean isLocationIconDisplayed() {
-        return getSytnerHeaderComp().isLocationIconDisplayed();
-    }
-
-    public boolean isSytnerHeaderUncentered() {
-        return getSytnerHeaderComp().isSytnerHeaderUncentered();
-    }
-
-    public boolean isSytnerHeaderCentered() {
-        return getSytnerHeaderComp().isSytnerHeaderCentered();
-    }
-
-    public boolean isSearchInputIconUndisplayed() {
-        return getSytnerHeaderComp().isSearchInputIconUndisplayed();
-    }
-
-    public boolean isSearchTextboxUndisplayed() {
-        return getSytnerHeaderComp().isSearchTextboxUndisplayed();
-    }
-
-    public boolean isSearchButtonUndisplayed() {
-        return getSytnerHeaderComp().isSearchButtonUndisplayed();
-    }
-
-    public boolean isSearchCloseIconUndisplayed() {
-        return getSytnerHeaderComp().isSearchCloseIconUndisplayed();
-    }
-
-    public void openSearchComponent() {
-        getSytnerHeaderComp().clickSearchIcon();
-    }
-
-    public boolean isSearchInputIconDisplayed() {
-        return getSytnerHeaderComp().isSearchInputIconDisplayed();
-    }
-
-    public boolean isSearchTextboxDisplayed() {
-        return getSytnerHeaderComp().isSearchTextboxDisplayed();
-    }
-
-    public boolean isSearchButtonDisplayed() {
-        return getSytnerHeaderComp().isSearchButtonDisplayed();
-    }
-
-    public boolean isSearchCloseIconDisplayed() {
-        return getSytnerHeaderComp().isSearchCloseIconDisplayed();
-    }
-
-    public void inputSearchTextbox(String searchValue) {
-        getSytnerHeaderComp().inputSearchTextbox(searchValue);
-    }
-
-    public void closeSearchComponent() {
-        getSytnerHeaderComp().closeSearchIcon();
-    }
-
-    public String getSearchPlaceHolder() {
-        return getSytnerHeaderComp().getSearchPlaceHolder();
-    }
-
-    public String getSearchValue() {
-        return getSytnerHeaderComp().getSearchValue();
-    }
-
-    public SearchPage clickSearchBtn() {
-        return getSytnerHeaderComp().clickSearchBtn();
     }
 
     public boolean isJumpPointDisplayed(String jumpPointName) {
@@ -322,32 +199,5 @@ public class HomePage extends BasePage {
         return PageGeneratorManager.getBasePage(getDriver());
     }
 
-    public void openBrandPageByName(String brandName) {
-        openMenuItems();
-        clickBrandByName(brandName);
-    }
 
-    public boolean isSectionMenuItemOpennedOnCurrentPage(String sectionName, String hyperlinkName) {
-        String target = getSytnerHeaderComp().getMenuItemTarget(sectionName, hyperlinkName);
-        if (target.isBlank()) {
-            return true;
-        }
-        return false;
-    }
-
-    public boolean isBrandMenuItemOpennedOnCurrentPage(String hyperlinkName) {
-        String target = getSytnerHeaderComp().isBrandOfferMenuItemOpennedOnCurrentPage(hyperlinkName);
-        if (target.isBlank()) {
-            return true;
-        }
-        return false;
-    }
-
-    public boolean isOfferMenuItemOpennedOnCurrentPage(String hyperlinkName) {
-        String target = getSytnerHeaderComp().isBrandOfferMenuItemOpennedOnCurrentPage(hyperlinkName);
-        if (target.isBlank()) {
-            return true;
-        }
-        return false;
-    }
 }

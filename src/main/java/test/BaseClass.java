@@ -4,14 +4,12 @@ import org.openqa.selenium.WebDriver;
 
 public class BaseClass {
     WebDriver driver;
-    private int i;
+    protected static int i;
 
     public BaseClass() {
     }
 
-    public BaseClass(WebDriver driver, int num) {
+    public BaseClass(WebDriver driver) {
         this.driver = driver;
-        i = num;
-        System.out.println(i);
     }
 }

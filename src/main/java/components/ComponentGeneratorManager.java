@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 
 public class ComponentGeneratorManager {
 
-    public static BrandHeaderComp getBrandHeaderComp(WebDriver driver){
-        return new BrandHeaderComp(driver);
+    public static BrandHeaderComp getBrandHeaderComp(){
+        return new BrandHeaderComp();
     }
 }
