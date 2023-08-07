@@ -18,7 +18,7 @@
     <test name="Run on Chrome" >
         <parameter name="browserName" value="CHROME"/>
         <classes>
-            <class name="alpinaPage.AlpinaPage_002_BrandHeader" />
+            <class name="maseratiPage.MaseratiPage_002_BrandHeader" />
         </classes>
     </test>
 

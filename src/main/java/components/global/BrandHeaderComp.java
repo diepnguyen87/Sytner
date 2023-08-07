@@ -19,13 +19,11 @@ public class BrandHeaderComp extends BasePage {
     }
 
     public boolean isLogoLinkDisplayed(String brandName) {
-        brandName = brandName.toUpperCase();
         waitForElementVisible(DYNAMIC_LOGO_LINK_BY_BRAND_NAME, brandName);
         return isElementDisplayedInDOM(DYNAMIC_LOGO_LINK_BY_BRAND_NAME, brandName);
     }
 
     public boolean isMenuLinksDisplayed(String brandName, String[] menuLinks) {
-        brandName = brandName.toUpperCase();
         for (String menuLink : menuLinks) {
             waitForElementVisible(DYNAMIC_MENU_LINK_BY_BRAND_NAME, brandName, menuLink);
             if (!isElementDisplayedInDOM(DYNAMIC_MENU_LINK_BY_BRAND_NAME, brandName, menuLink)) return false;
@@ -34,7 +32,6 @@ public class BrandHeaderComp extends BasePage {
     }
 
     public boolean isOpenMenuIconDisplayed(String brandName) {
-        brandName = brandName.toUpperCase();
         waitForElementVisible(DYNAMIC_OPEN_MENU_ICON_BY_BRAND_NAME, brandName);
         return isElementDisplayedInDOM(DYNAMIC_OPEN_MENU_ICON_BY_BRAND_NAME, brandName);
     }

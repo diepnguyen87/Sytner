@@ -130,13 +130,23 @@ public class MaseratiPage_001_SytnerHeader extends BaseTest {
         maseratiPage = PageGeneratorManager.getMaseratiPage(driver);
     }
 
+    @Test
+    public void SytnerHeader_012_OutsideViewport_WhenPageScrollDown() {
+        maseratiPage.moveToMainContent();
+        Assert.assertTrue(sytnerHeaderComp.isSytnerHeaderOutsideViewport());
+    }
 
+    @Test
+    public void SytnerHeader_013_InsideViewport_WhenPageScrollUp() {
+        maseratiPage.moveToSytnerHeader();
+        Assert.assertTrue(sytnerHeaderComp.isSytnerHeaderInsideViewport());
+    }
 
     private SytnerHeaderComp sytnerHeaderComp;
     private MaseratiPage maseratiPage;
     private SearchPage searchPage;
     private String maseratiURL;
 
-    private String parentBrand = "maserati";
-    private String childBrand = "maserati";
+    private String parentBrand = "Maserati";
+    private String childBrand = "Maserati";
 }

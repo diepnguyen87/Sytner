@@ -6,6 +6,8 @@ import utilities.DataObjectBuilder;
 import utilities.model.*;
 
 import java.util.Arrays;
+import java.util.List;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class DataController {
@@ -34,15 +36,19 @@ public class DataController {
     }
 
     public static String getSlugByBrandName(String brandName) {
+
         if (brandData == null) {
             brandData = DataObjectBuilder.buildDataObject(GlobalContants.CAR_BRANDS_DATA_JSON, Brand[].class);
         }
-        return Arrays.stream(brandData).map(brand -> {
+     /*   return Arrays.stream(brandData).map(brand -> {
+            String result = null;
             if (brand.getName().equalsIgnoreCase(brandName)) {
-                return brand.getSlug();
+                result = brand.getSlug();
             }
-            return null;
-        }).collect(Collectors.toList()).get(0);
+            return result;
+        }).collect(Collectors.toList()).get(0);*/
+
+        return Arrays.stream(brandData).filter(brand -> brand.getName().equalsIgnoreCase(brandName)).limit(1).collect(Collectors.toList()).get(0).getSlug();
     }
 
     @DataProvider(name = "brands")
@@ -85,11 +91,6 @@ public class DataController {
     @DataProvider(name = "brandMenuLinks")
     public static String[] brandMenuLinkDataSet(String brandName) {
         BrandMenuLinks[] brandMenuLinks = DataObjectBuilder.buildDataObject(GlobalContants.BRAND_MENU_LINKS_HEADER_DATA_JSON, BrandMenuLinks[].class);
-        return Arrays.stream(brandMenuLinks).map(row -> {
-            if (row.getBrand().equalsIgnoreCase(brandName)) {
-                return row.getMenuLinks();
-            }
-            return null;
-        }).collect(Collectors.toList()).get(0);
+        return Arrays.stream(brandMenuLinks).filter(row -> row.getBrand().equalsIgnoreCase(brandName)).limit(1).collect(Collectors.toList()).get(0).getMenuLinks();
     }
 }

@@ -1,9 +1,9 @@
 package pages.Maserati;
 
-import commons.BasePage;
 import org.openqa.selenium.WebDriver;
+import pages.BrandPage;
 
-public class MaseratiPage extends BasePage {
+public class MaseratiPage extends BrandPage {
 
     public MaseratiPage() {
     }

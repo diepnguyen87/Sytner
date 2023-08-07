@@ -8,5 +8,14 @@
       "Servicing, Parts & Bodyshop",
       "Our BMW Centres"
     ]
+  },
+  {
+    "brand": "Maserati",
+    "menuLinks": [
+      "Pre-Owned Search",
+      "Model Range",
+      "Servicing & Aftercare",
+      "Dealerships"
+    ]
   }
 ]
