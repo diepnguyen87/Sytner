@@ -1,12 +1,14 @@
 package pages.bmw;
 
+import UI.page.BMWPageUI;
 import commons.BasePage;
-import components.ComponentGeneratorManager;
 import components.global.BrandHeaderComp;
+import components.global.SytnerHeaderComp;
 import org.openqa.selenium.WebDriver;
 
 public class BMWPage extends BasePage {
-    private static ThreadLocal<BrandHeaderComp> tbrandHeader = new ThreadLocal<>();
+
+    protected BrandHeaderComp brandHeaderComp;
 
     public BMWPage() {
 
@@ -14,12 +16,20 @@ public class BMWPage extends BasePage {
 
     public BMWPage(WebDriver driver) {
         super(driver);
+        brandHeaderComp = BrandHeaderComp.getBrandHeaderComp();
     }
 
-    public BrandHeaderComp getBrandHeaderComp(){
-        if(tbrandHeader.get() == null){
-            tbrandHeader.set(ComponentGeneratorManager.getBrandHeaderComp());
-        }
-        return tbrandHeader.get();
+    public void moveToMainContent() {
+        waitForElementVisible(BMWPageUI.MAIN_CONTENT);
+        scrollToElementOnDown(BMWPageUI.MAIN_CONTENT);
+        sleepInSecond(1);
     }
+
+    public void moveToSytnerHeader(){
+        waitForElementVisible(SytnerHeaderComp.SYTNER_HEADER);
+        scrollToElementOnTop(SytnerHeaderComp.SYTNER_HEADER);
+        sleepInSecond(1);
+    }
+
+
 }

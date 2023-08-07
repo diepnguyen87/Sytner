@@ -22,10 +22,10 @@
         </classes>
     </test>
 
-    <test name="Run on Firefox" >
+    <!--<test name="Run on Firefox" >
         <parameter name="browserName" value="FIREFOX"/>
         <classes>
             <class name="alpinaPage.AlpinaPage_002_BrandHeader" />
         </classes>
-    </test>
+    </test>-->
 </suite>

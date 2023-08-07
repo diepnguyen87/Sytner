@@ -56,6 +56,7 @@ public class LocalFactory {
                     throw new RuntimeException("[ERROR] The browser " + browserName + " is NOT supported");
             }
         }
+
         return driver;
     }
 

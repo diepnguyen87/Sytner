@@ -233,8 +233,8 @@ public class BasePage {
         return getElement(locator, dynamicValues).getText();
     }
 
-    public String getCssValue(String locator, String cssName) {
-        return getElement(locator).getCssValue(cssName);
+    public String getCssValue(String locator, String cssName, String... dynamicValues) {
+        return getElement(locator, dynamicValues).getCssValue(cssName);
     }
 
     public String getHexaColorFromRGBA(String rgbaValue) {
@@ -502,6 +502,17 @@ public class BasePage {
         getDriver().close();
         getDriver().switchTo().window(parentWindow);
         return currentURL;
+    }
+
+    public boolean isElementInViewport(String locator, String... dynamicValues){
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) getDriver();
+        WebElement element = getElement(locator, dynamicValues);
+        boolean isInVerticalCriteria1 = (Boolean) jsExecutor.executeScript("return ((window.innerHeight) + (window.pageYOffset) > arguments[0].offsetTop)", element);
+        boolean isInVerticalCriteria2 = (Boolean) jsExecutor.executeScript("return (window.pageYOffset < (arguments[0].offsetTop + arguments[0].offsetHeight))", element);
+
+        boolean isInHorizontalCriteria1 = (Boolean) jsExecutor.executeScript("return (arguments[0].offsetLeft < window.innerWidth) ", element);
+        boolean isInHorizontalCriteria2 = (Boolean) jsExecutor.executeScript("return ((arguments[0].offsetLeft + arguments[0].offsetWidth) < window.innerWidth) ", element);
+        return isInVerticalCriteria1 && isInVerticalCriteria2 && isInHorizontalCriteria1 && isInHorizontalCriteria2;
     }
 
     private static ThreadLocal<WebDriver> tdriver = new ThreadLocal<>();

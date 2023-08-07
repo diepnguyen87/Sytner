@@ -2,6 +2,7 @@ package pages;
 
 import commons.BasePage;
 import org.openqa.selenium.WebDriver;
+import pages.Maserati.MaseratiPage;
 import pages.bmw.AlpinaPage;
 
 public class PageGeneratorManager {
@@ -35,5 +36,8 @@ public class PageGeneratorManager {
 
     public static AlpinaPage getAlpinaPage(WebDriver driver){
         return new AlpinaPage(driver);
+    }
+    public static MaseratiPage getMaseratiPage(WebDriver driver){
+        return new MaseratiPage(driver);
     }
 }

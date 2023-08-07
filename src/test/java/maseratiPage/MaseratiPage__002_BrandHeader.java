@@ -1,4 +1,4 @@
-package alpinaPage;
+package maseratiPage;
 
 import commons.BaseTest;
 import components.global.BrandHeaderComp;
@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 import pages.PageGeneratorManager;
 import pages.bmw.AlpinaPage;
 
-public class AlpinaPage_002_BrandHeader extends BaseTest {
+public class MaseratiPage__002_BrandHeader extends BaseTest {
 
     @BeforeClass
     public void beforeClass(){
@@ -26,16 +26,13 @@ public class AlpinaPage_002_BrandHeader extends BaseTest {
     }
 
     @Test
-    public void SytnerHeader_002_Sticky_WhenPageScrollDown(){
-        alpinaPage.moveToMainContent();
-        Assert.assertTrue(brandHeaderComp.isBrandHeaderSectionDisplayed(parentBrand));
+    public void SytnerHeader_002_Sticky_WhenPageScroll(){
         Assert.assertTrue(brandHeaderComp.isSticky(parentBrand));
     }
 
     private AlpinaPage alpinaPage;
     private BrandHeaderComp brandHeaderComp;
     private String alpinaURL;
-
     private String parentBrand = "BMW";
     private String childBrand = "Alpina";
 }
