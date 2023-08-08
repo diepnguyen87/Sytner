@@ -1,7 +1,6 @@
 package utilities;
 
 import com.google.gson.Gson;
-import commons.GlobalContants;
 
 import java.io.Reader;
 import java.nio.file.Files;

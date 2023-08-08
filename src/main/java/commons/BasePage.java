@@ -522,12 +522,19 @@ public class BasePage {
 
     /* Sytner Header and Footer */
     private static ThreadLocal<SytnerHeaderComp> tSytnerHeader = new ThreadLocal<>();
-    private SytnerFooterComp sytnerFooter;
+    private static ThreadLocal<SytnerFooterComp> tSytnerFooter = new ThreadLocal<>();
 
     public SytnerHeaderComp getSytnerHeaderComp(){
         if(tSytnerHeader.get() == null){
             tSytnerHeader.set(new SytnerHeaderComp());
         }
         return tSytnerHeader.get();
+    }
+
+    public SytnerFooterComp getSytnerFooterComp(){
+        if(tSytnerFooter.get() == null){
+            tSytnerFooter.set(new SytnerFooterComp());
+        }
+        return tSytnerFooter.get();
     }
 }

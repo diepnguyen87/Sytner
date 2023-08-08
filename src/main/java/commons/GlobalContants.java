@@ -2,6 +2,7 @@ package commons;
 
 import java.io.File;
 import java.time.Duration;
+import java.util.Arrays;
 
 import org.aeonbits.owner.Config;
 import org.aeonbits.owner.ConfigFactory;
@@ -39,6 +40,8 @@ public interface GlobalContants extends Config {
     String SERVICES_DATA_JSON = TEST_RESOURCES.concat("Services.json");
     String FEATURED_NEW_CAR_OFFERS_DATA_JSON = TEST_RESOURCES.concat("FeaturedNewCarOffers.json");
     String BRAND_MENU_LINKS_HEADER_DATA_JSON = TEST_RESOURCES.concat("BrandMenuLinks.json");
+    String FOOTER_LINKS =  TEST_RESOURCES.concat("FooterLinks.json");
+    String POLICY_LINKS =  TEST_RESOURCES.concat("PolicyLinks.json");
 
     static String getAbsolutatePathByOS(String folderName) {
         return PROJECT_PATH.concat(FILE_SEPARATOR).concat(folderName).concat(FILE_SEPARATOR);

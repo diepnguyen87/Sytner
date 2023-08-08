@@ -6,8 +6,6 @@ import utilities.DataObjectBuilder;
 import utilities.model.*;
 
 import java.util.Arrays;
-import java.util.List;
-import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class DataController {
@@ -92,5 +90,15 @@ public class DataController {
     public static String[] brandMenuLinkDataSet(String brandName) {
         BrandMenuLinks[] brandMenuLinks = DataObjectBuilder.buildDataObject(GlobalContants.BRAND_MENU_LINKS_HEADER_DATA_JSON, BrandMenuLinks[].class);
         return Arrays.stream(brandMenuLinks).filter(row -> row.getBrand().equalsIgnoreCase(brandName)).limit(1).collect(Collectors.toList()).get(0).getMenuLinks();
+    }
+    @DataProvider(name = "footerLinksByPage")
+    public static FooterLink.FooterColumn[] footerLinkDataSetByPage(String pageName){
+        FooterLink[] footerLinks = DataObjectBuilder.buildDataObject(GlobalContants.FOOTER_LINKS, FooterLink[].class);
+        return Arrays.stream(footerLinks).filter(page -> page.getPage().equalsIgnoreCase(pageName)).limit(1).collect(Collectors.toList()).get(0).getColumns();
+    }
+
+    @DataProvider(name = "policyLinks")
+    public static PolicyLink[] policyLinkDataSet(){
+        return DataObjectBuilder.buildDataObject(GlobalContants.POLICY_LINKS, PolicyLink[].class);
     }
 }

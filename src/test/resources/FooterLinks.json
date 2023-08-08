@@ -1,0 +1,358 @@
+[
+  {
+    "page": "general",
+    "columns":[
+      {
+        "name": "Sytner Group",
+        "links": [
+          {
+            "name": "Vehicle Search",
+            "slug": "search"
+          },
+          {
+            "name": "Finance",
+            "slug": "finance"
+          },
+          {
+            "name": "Customer Service",
+            "slug": "customer-service"
+          },
+          {
+            "name": "Customer Support",
+            "slug": "customer-service/customer-support"
+          },
+          {
+            "name": "Sell Your Car",
+            "slug": "sell-your-car"
+          },
+          {
+            "name": "Service & MOT",
+            "slug": "service-parts-and-repair"
+          },
+          {
+            "name": "Sitemap",
+            "slug": "sitemap"
+          }
+        ]
+      },
+      {
+        "name": "Company",
+        "links": [
+          {
+            "name": "Our Locations",
+            "slug": ""
+          },
+          {
+            "name": "About Us",
+            "slug": ""
+          },
+          {
+            "name": "Careers",
+            "slug": ""
+          },
+          {
+            "name": "U.S. Dealerships",
+            "slug": ""
+          },
+          {
+            "name": "Sustainability",
+            "slug": ""
+          },
+          {
+            "name": "Goodwood 2023",
+            "slug": ""
+          }
+        ]
+      },
+      {
+        "name": "Our Brands",
+        "links": [
+          {
+            "name": "Aston Martin",
+            "slug": ""
+          },
+          {
+            "name": "Audi",
+            "slug": ""
+          },
+          {
+            "name": "Bentley",
+            "slug": ""
+          },
+          {
+            "name": "BMW",
+            "slug": ""
+          },
+          {
+            "name": "Bugatti",
+            "slug": ""
+          },
+          {
+            "name": "Ferrari",
+            "slug": ""
+          },
+          {
+            "name": "Jaguar",
+            "slug": ""
+          },
+          {
+            "name": "Lamborghini",
+            "slug": ""
+          },
+          {
+            "name": "Land Rover",
+            "slug": ""
+          },
+          {
+            "name": "Maserati",
+            "slug": ""
+          },
+          {
+            "name": "McLaren",
+            "slug": ""
+          },
+          {
+            "name": "Mercedes-Benz",
+            "slug": ""
+          },
+          {
+            "name": "MINI",
+            "slug": ""
+          },
+          {
+            "name": "Pagani",
+            "slug": ""
+          },
+          {
+            "name": "Porsche",
+            "slug": ""
+          },
+          {
+            "name": "Rolls Royce",
+            "slug": ""
+          },
+          {
+            "name": "SEAT",
+            "slug": ""
+          },
+          {
+            "name": "Škoda",
+            "slug": ""
+          },
+          {
+            "name": "smart",
+            "slug": ""
+          },
+          {
+            "name": "Volkswagen",
+            "slug": ""
+          },
+          {
+            "name": "Volkswagen Commercial",
+            "slug": ""
+          },
+          {
+            "name": "Sytner Select",
+            "slug": ""
+          },
+          {
+            "name": "CarShop",
+            "slug": ""
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "page": "BMW",
+    "columns":[
+      {
+        "name": "Products & Services",
+        "links": [
+          {
+            "name": "Home",
+            "slug": "bmw/"
+          },
+          {
+            "name": "New BMW",
+            "slug": "bmw/range"
+          },
+          {
+            "name": "Used BMW",
+            "slug": "search/bmw?query=&toggle%5BmarketingType%5D=true"
+          },
+          {
+            "name": "BMW Offers",
+            "slug": "bmw/new-offers/"
+          },
+          {
+            "name": "BMW Maintenance",
+            "slug": "bmw/service-parts-and-repair/"
+          },
+          {
+            "name": "BMW Business Lease",
+            "slug": "bmw/business-users/"
+          },
+          {
+            "name": "BMW Sustainability",
+            "slug": "bmw/sustainability/drive-sustainably"
+          }
+        ]
+      },
+      {
+        "name": "Sytner BMW",
+        "links": [
+          {
+            "name": "About Us",
+            "slug": "bmw/#about-us"
+          },
+          {
+            "name": "BMW Alpina",
+            "slug": "/alpina"
+          },
+          {
+            "name": "BMW Careers",
+            "slug": "bmw/careers"
+          },
+          {
+            "name": "BMW Customer Service",
+            "slug": "bmw/customer-service/"
+          },
+          {
+            "name": "BMW Dealerships",
+            "slug": "bmw/dealerships?brand=BMW"
+          },
+          {
+            "name": "BMW News",
+            "slug": "bmw/news/"
+          }
+        ]
+      },
+      {
+        "name": "Our Range",
+        "links": [
+          {
+            "name": "1 Series",
+            "slug": "bmw/range/1-series/"
+          },
+          {
+            "name": "2 Series",
+            "slug": "bmw/range/2-series/"
+          },
+          {
+            "name": "3 Series",
+            "slug": "bmw/range/3-series/"
+          },
+          {
+            "name": "4 Series",
+            "slug": "bmw/range/4-series/"
+          },
+          {
+            "name": "5 Series",
+            "slug": "bmw/range/5-series/"
+          },
+          {
+            "name": "7 Series",
+            "slug": "bmw/range/7-series/"
+          },
+          {
+            "name": "8 Series",
+            "slug": "bmw/range/8-series/"
+          },
+          {
+            "name": "X Range",
+            "slug": "bmw/range/x-range/"
+          },
+          {
+            "name": "M Range",
+            "slug": "bmw/range/m-range/"
+          },
+          {
+            "name": "i Range",
+            "slug": "bmw/range/i-range/"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "page": "Maserati",
+    "columns":[
+      {
+        "name": "Products & Services",
+        "links": [
+          {
+            "name": "Home",
+            "slug": "maserati"
+          },
+          {
+            "name": "New Maserati",
+            "slug": "maserati/range"
+          },
+          {
+            "name": "Used Maserati",
+            "slug": "search/maserati?query=&toggle%5BmarketingType%5D=true"
+          },
+          {
+            "name": "Maserati Maintenance",
+            "slug": "maserati/service-parts-and-repair/"
+          }
+        ]
+      },
+      {
+        "name": "Sytner Maserati",
+        "links": [
+          {
+            "name": "Contact Maserati",
+            "slug": "maserati/enquiry"
+          },
+          {
+            "name": "Maserati Dealerships",
+            "slug": "maserati/dealerships/"
+          },
+          {
+            "name": "About Us",
+            "slug": "maserati/#about-us"
+          },
+          {
+            "name": "Sell Your Maserati",
+            "slug": "maserati/sell-your-car/"
+          },
+          {
+            "name": "Maserati Customer Service",
+            "slug": "maserati/customer-service/"
+          },
+          {
+            "name": "Maserati Careers",
+            "slug": "maserati/careers"
+          },
+          {
+            "name": "Maserati News",
+            "slug": "maserati/news/"
+          }
+        ]
+      },
+      {
+        "name": "Our Range",
+        "links": [
+          {
+            "name": "Ghibli",
+            "slug": "maserati/range/ghibli/"
+          },
+          {
+            "name": "Quattroporte",
+            "slug": "maserati/range/quattroporte/"
+          },
+          {
+            "name": "MC20",
+            "slug": "maserati/range/mc20/"
+          },
+          {
+            "name": "Levante",
+            "slug": "maserati/range/levante/levante"
+          }
+        ]
+      }
+    ]
+  }
+]
