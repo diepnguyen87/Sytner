@@ -1,0 +1,52 @@
+[
+  {
+    "page": "Home",
+    "socialNetworks": [
+      {
+        "name": "Instagram",
+        "url": "https://www.instagram.com/sytnergroup"
+      },
+      {
+        "name": "Facebook",
+        "url": "https://www.instagram.com/sytnergroup"
+      },
+      {
+        "name": "LinkedIn",
+        "url": "https://www.linkedin.com/company/sytner-group"
+      },
+      {
+        "name": "Youtube",
+        "url": "https://www.youtube.com/SytnerGroup"
+      },
+      {
+        "name": "Twitter",
+        "url": "https://www.twitter.com/Sytner/?lang=en/?lang=en"
+      }
+    ]
+  },
+  {
+    "page": "Alpina",
+    "socialNetworks": [
+      {
+        "name": "Instagram",
+        "url": "https://www.instagram.com/sytner_bmw"
+      },
+      {
+        "name": "Facebook",
+        "url": "https://facebook.com/SytnerBMW"
+      },
+      {
+        "name": "LinkedIn",
+        "url": "https://www.linkedin.com/company/sytner-bmw"
+      },
+      {
+        "name": "Youtube",
+        "url": "https://www.youtube.com/user/SytnerBMW"
+      },
+      {
+        "name": "Twitter",
+        "url": "https://twitter.com/sytnerbmw"
+      }
+    ]
+  }
+]

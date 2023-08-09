@@ -4,8 +4,9 @@ import commons.BasePage;
 
 public class SytnerFooterComp extends BasePage {
 
+    public static String SOCIAL_BAR = "css=div[class*='SocialBar_socialIcons']";
     public static String DYNAMIC_SOCIAL_NETWORK_ICON = "css=a[aria-label='%s']";
-    public static String DYNAMIC_HYPERLINK_BY_COLUMN_NAME = "xpath=//h6[text()='%s']/following-sibling::nav//a[text()='%s']";
+    public static String DYNAMIC_HYPERLINK_BY_COLUMN_NAME = "xpath=//h6[text()='%s']/following-sibling::nav//a[contains(text(), '%s')]";
     public static String OUR_LOCATION = "xpath=//footer//h6[text()='Our Location']/following-sibling::div/p";
     public static String DISCLOSURE = "xpath=//footer//h6[text()='Disclosure']/following-sibling::div/p";
     public static String ACCEPTED_PAYMENT_METHOD = "xpath=//footer//h6[text()='Accepted Payment Methods']/following-sibling::a/img";
@@ -14,9 +15,9 @@ public class SytnerFooterComp extends BasePage {
     public SytnerFooterComp() {
     }
 
-    public void moveToSocialNetwork(String socialNetworkName) {
-        waitForElementVisible(DYNAMIC_SOCIAL_NETWORK_ICON, socialNetworkName);
-        scrollToElementOnDown(DYNAMIC_SOCIAL_NETWORK_ICON, socialNetworkName);
+    public void moveToSocialNetwork() {
+        waitForElementVisible(SOCIAL_BAR);
+        scrollToElementOnDown(SOCIAL_BAR);
     }
 
     public String getTargetAttributeSocialNetwork(String socialNetworkName) {

@@ -42,6 +42,7 @@ public interface GlobalContants extends Config {
     String BRAND_MENU_LINKS_HEADER_DATA_JSON = TEST_RESOURCES.concat("BrandMenuLinks.json");
     String FOOTER_LINKS =  TEST_RESOURCES.concat("FooterLinks.json");
     String POLICY_LINKS =  TEST_RESOURCES.concat("PolicyLinks.json");
+    String SOCIAL_NETWORKS = TEST_RESOURCES.concat("SocialNetworks.json");
 
     static String getAbsolutatePathByOS(String folderName) {
         return PROJECT_PATH.concat(FILE_SEPARATOR).concat(folderName).concat(FILE_SEPARATOR);

@@ -101,4 +101,11 @@ public class DataController {
     public static PolicyLink[] policyLinkDataSet(){
         return DataObjectBuilder.buildDataObject(GlobalContants.POLICY_LINKS, PolicyLink[].class);
     }
+
+    @DataProvider(name = "socialNetworks")
+    public static SocialLink.SocialNetwork[] socialNetworkDataSetByPage(String pageName){
+        SocialLink[] socialLinks = DataObjectBuilder.buildDataObject(GlobalContants.SOCIAL_NETWORKS, SocialLink[].class);
+        return Arrays.stream(socialLinks).filter(page -> page.getPage().equalsIgnoreCase(pageName)).limit(1).collect(Collectors.toList()).get(0).getSocialNetworks();
+    }
+
 }

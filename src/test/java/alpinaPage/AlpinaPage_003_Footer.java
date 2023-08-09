@@ -1,28 +1,34 @@
-package homePage;
+package alpinaPage;
 
 import commons.BaseTest;
 import components.global.SytnerFooterComp;
+import components.global.SytnerHeaderComp;
 import data.DataController;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import utilities.model.FooterLink;
-import utilities.model.PolicyLink;
-import utilities.model.SocialLink;
+import pages.PageGeneratorManager;
+import pages.SearchPage;
+import pages.bmw.AlpinaPage;
+import utilities.model.*;
 
 import java.util.Arrays;
 
-public class HomePage_004_Footer extends BaseTest {
+public class AlpinaPage_003_Footer extends BaseTest {
 
     @BeforeClass
     public void beforeClass() {
-        sytnerFooterComp = homePage.getSytnerFooterComp();
+        homePage.getSytnerHeaderComp().openBrandPageByName(childBrand);
+        alpinaPage = PageGeneratorManager.getAlpinaPage(driver);
+        sytnerFooterComp = alpinaPage.getSytnerFooterComp();
+        alpinaURL = appURL.concat(DataController.getSlugByBrandName(childBrand));
     }
 
-    public void Footer_001_SocialNetworks(SocialLink.SocialNetwork socialNetwork) {
+    @Test
+    public void Footer_001_SocialNetworks() {
         sytnerFooterComp.moveToSocialNetwork();
 
-        SocialLink.SocialNetwork[] socialNetworks = DataController.socialNetworkDataSetByPage("Home");
+        SocialLink.SocialNetwork[] socialNetworks = DataController.socialNetworkDataSetByPage("Alpina");
         for (SocialLink.SocialNetwork network : socialNetworks) {
             String name = network.getName();
             Assert.assertEquals(sytnerFooterComp.getTargetAttributeSocialNetwork(name), "_blank");
@@ -32,7 +38,7 @@ public class HomePage_004_Footer extends BaseTest {
 
     @Test
     public void Footer_002_FooterLinks() {
-        FooterLink.FooterColumn[] footerColumns = DataController.footerLinkDataSetByPage("general");
+        FooterLink.FooterColumn[] footerColumns = DataController.footerLinkDataSetByPage(parentBrand);
 
         Arrays.stream(footerColumns).forEach(column -> {
             String columnName = column.getName();
@@ -42,7 +48,14 @@ public class HomePage_004_Footer extends BaseTest {
                 String linkName = link.getName();
                 Assert.assertTrue(sytnerFooterComp.isFooterLinkDisplayed(columnName, linkName));
                 Assert.assertEquals(sytnerFooterComp.getTargetAttributeFooterLink(columnName, linkName), "");
+                String a = sytnerFooterComp.getHrefAttributeFooterLink(columnName, linkName);
+                String b = appURL.concat(link.getSlug());
+                boolean c = a.contains(b);
+                if(c == false){
+                    System.out.println("stop");
+                }
                 Assert.assertTrue(sytnerFooterComp.getHrefAttributeFooterLink(columnName, linkName).contains(appURL.concat(link.getSlug())));
+
             }
         });
     }
@@ -73,5 +86,10 @@ public class HomePage_004_Footer extends BaseTest {
         Assert.assertEquals(sytnerFooterComp.getHrefAttributePolicyLink(policy.getName()), appURL.concat(policy.getSlug()));
     }
 
+
     private SytnerFooterComp sytnerFooterComp;
+    private AlpinaPage alpinaPage;
+    private String alpinaURL;
+    private String parentBrand = "BMW";
+    private String childBrand = "Alpina";
 }
