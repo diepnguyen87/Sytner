@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 import pages.SearchPage;
 import utilities.model.FeaturedNewCarOffers;
 
-public class HomePage_003_MainContent_Sections extends BaseTest {
+public class HomePage_003_MainContent_Section_FeaturedNewCarOffers extends BaseTest {
 
     @Test
     public void MainContent_001_Section_FeatureNewCarOffers() {

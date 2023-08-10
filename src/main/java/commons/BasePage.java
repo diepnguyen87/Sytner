@@ -18,14 +18,14 @@ import java.util.Set;
 public class BasePage {
 
     public WebDriver getDriver(){
-        return tdriver.get();
+        return tDriver.get();
     }
     public BasePage() {
     }
 
     public BasePage(WebDriver driver) {
-        if(tdriver.get() == null){
-            tdriver.set(driver);
+        if(tDriver.get() == null){
+            tDriver.set(driver);
         }
     }
 
@@ -515,9 +515,7 @@ public class BasePage {
         return isInVerticalCriteria1 && isInVerticalCriteria2 && isInHorizontalCriteria1 && isInHorizontalCriteria2;
     }
 
-    private static ThreadLocal<WebDriver> tdriver = new ThreadLocal<>();
-
-
+    private static ThreadLocal<WebDriver> tDriver = new ThreadLocal<>();
 
 
     /* Sytner Header and Footer */

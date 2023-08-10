@@ -11,14 +11,14 @@
   <!--  <test name="Run on Chrome" >
         <parameter name="browserName" value="CHROME"/>
         <classes>
-            <class name="homePage.HomePage_001_Header" />
+            <class name="homePage.HomePage_001_SytnerHeader" />
         </classes>
     </test>
 -->
     <test name="Run on Chrome" >
         <parameter name="browserName" value="CHROME"/>
         <classes>
-            <class name="maseratiPage.MaseratiPage_003_Footer" />
+            <class name="homePage.HomePage_002_MainContent_Section_Video" />
         </classes>
     </test>
 

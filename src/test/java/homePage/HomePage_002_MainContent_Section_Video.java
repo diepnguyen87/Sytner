@@ -5,15 +5,25 @@ import data.DataController;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.PageGeneratorManager;
 import pages.SearchPage;
 import utilities.model.Article;
 import utilities.model.Brand;
 import utilities.model.Service;
 
-public class HomePage_002_MainContent_JumpPoints extends BaseTest {
+public class HomePage_002_MainContent_Section_Video extends BaseTest {
+
+    @Test
+    public void VideoSection_001_Search(){
+        String expectedURL = "https://www.sytner.co.uk/search";
+        searchPage = homePage.clickSearchButton();
+        Assert.assertTrue(searchPage.getCurrentURL().contains(expectedURL));
+        searchPage.navigateToURL(appURL);
+        homePage = PageGeneratorManager.getHomePage(driver);
+    }
 
     @Test()
-    public void MainContent_001_Jump_Point_OurBrands() {
+    public void VideoSection_002_Jump_Point_OurBrands() {
         Assert.assertTrue(homePage.isJumpPointDisplayed("Our brands"));
         homePage.clickJumpPointByName("Our brands");
 
@@ -23,7 +33,7 @@ public class HomePage_002_MainContent_JumpPoints extends BaseTest {
     }
 
     @Test()
-    public void MainContent_002_Jump_Point_SellYourCar() {
+    public void VideoSection_003_Jump_Point_SellYourCar() {
         Assert.assertTrue(homePage.isJumpPointDisplayed("Sell your car"));
         homePage.clickJumpPointByName("Sell your car");
 
@@ -37,7 +47,7 @@ public class HomePage_002_MainContent_JumpPoints extends BaseTest {
     }
 
     @Test()
-    public void MainContent_003_Jump_Point_OurDealerships() {
+    public void VideoSection_004_Jump_Point_OurDealerships() {
         Assert.assertTrue(homePage.isJumpPointDisplayed("Our dealerships"));
         homePage.clickJumpPointByName("Our dealerships");
 
@@ -52,7 +62,7 @@ public class HomePage_002_MainContent_JumpPoints extends BaseTest {
     }
 
     @Test
-    public void MainContent_004_Jump_Point_Service() {
+    public void VideoSection_005_Jump_Point_Service() {
         Assert.assertTrue(homePage.isJumpPointDisplayed("Service, MOT & Repairs"));
         homePage.clickJumpPointByName("Service, MOT & Repairs");
 

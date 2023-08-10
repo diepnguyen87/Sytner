@@ -9,8 +9,11 @@ import org.openqa.selenium.WebDriver;
 
 public class HomePage extends BasePage {
 
+    private WebDriver driver;
+
     public HomePage(WebDriver driver) {
         super(driver);
+        this.driver = getDriver();
     }
 
     public void acceptAllCookies() {
@@ -168,36 +171,40 @@ public class HomePage extends BasePage {
         sleepInSecond(1);
         openPageOnNewTab(HomePageUI.DYNAMIC_FEATURED_SUB_HEADING, expectedSubHeading);
         switchToWindowByTitle(expectedSubHeading);
-        return PageGeneratorManager.getBasePage(getDriver());
+        return PageGeneratorManager.getBasePage(driver);
     }
 
     public BasePage openHeadingOnNewTab(String expectedSubHeading) {
         sleepInSecond(1);
         openPageOnNewTab(HomePageUI.DYNAMIC_FEATURED_HEADING, expectedSubHeading);
         switchToWindowByTitle(expectedSubHeading);
-        return PageGeneratorManager.getBasePage(getDriver());
+        return PageGeneratorManager.getBasePage(driver);
     }
 
     public BasePage openImageOnNewTab(String expectedSubHeading) {
         sleepInSecond(1);
         openPageOnNewTab(HomePageUI.DYNAMIC_FEATURED_IMAGE, expectedSubHeading);
         switchToWindowByTitle(expectedSubHeading);
-        return PageGeneratorManager.getBasePage(getDriver());
+        return PageGeneratorManager.getBasePage(driver);
     }
 
     public BasePage openOfferOnNewTab(String expectedSubHeading, String expectedOffer) {
         sleepInSecond(1);
         openPageOnNewTab(HomePageUI.DYNAMIC_FEATURED_OFFER, expectedSubHeading, expectedOffer);
         switchToWindowByTitle(expectedSubHeading);
-        return PageGeneratorManager.getBasePage(getDriver());
+        return PageGeneratorManager.getBasePage(driver);
     }
 
     public BasePage openOfferLinkOnNewTab(String expectedSubHeading) {
         sleepInSecond(1);
         openPageOnNewTab(HomePageUI.DYNAMIC_LINK_TO_OFFER, expectedSubHeading);
         switchToWindowByTitle(expectedSubHeading);
-        return PageGeneratorManager.getBasePage(getDriver());
+        return PageGeneratorManager.getBasePage(driver);
     }
 
-
+    public SearchPage clickSearchButton() {
+        waitForElementVisible(HomePageUI.SEARCH_BUTTON);
+        clickToElement(HomePageUI.SEARCH_BUTTON);
+        return PageGeneratorManager.getSearchPage(driver);
+    }
 }

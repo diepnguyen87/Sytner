@@ -13,7 +13,7 @@ import utilities.model.Offer;
 
 import java.util.Arrays;
 
-public class HomePage_001_Header extends BaseTest {
+public class HomePage_001_SytnerHeader extends BaseTest {
 
     @BeforeClass
     public void beforeClass() {
