@@ -48,5 +48,30 @@
         "url": "https://twitter.com/sytnerbmw"
       }
     ]
+  },
+  {
+    "page": "Maserati",
+    "socialNetworks": [
+      {
+        "name": "Instagram",
+        "url": "https://www.instagram.com/_u/sytnergroup"
+      },
+      {
+        "name": "Facebook",
+        "url": "https://www.facebook.com/SytnerGroup"
+      },
+      {
+        "name": "LinkedIn",
+        "url": "https://www.linkedin.com/company/sytner-group"
+      },
+      {
+        "name": "Youtube",
+        "url": "https://www.youtube.com/SytnerGroup"
+      },
+      {
+        "name": "Twitter",
+        "url": "https://www.twitter.com/Sytner/?lang=en/?lang=en"
+      }
+    ]
   }
 ]

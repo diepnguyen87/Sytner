@@ -102,6 +102,11 @@ public class DataController {
         return DataObjectBuilder.buildDataObject(GlobalContants.POLICY_LINKS, PolicyLink[].class);
     }
 
+    @DataProvider(name = "fcaAllPage")
+    public static FCA getFCAAllPage(){
+        return DataObjectBuilder.buildDataObject(GlobalContants.FCA_LINKS, FCA.class);
+    }
+
     @DataProvider(name = "socialNetworks")
     public static SocialLink.SocialNetwork[] socialNetworkDataSetByPage(String pageName){
         SocialLink[] socialLinks = DataObjectBuilder.buildDataObject(GlobalContants.SOCIAL_NETWORKS, SocialLink[].class);

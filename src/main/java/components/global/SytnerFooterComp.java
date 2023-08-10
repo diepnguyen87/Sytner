@@ -1,6 +1,8 @@
 package components.global;
 
 import commons.BasePage;
+import data.DataController;
+import utilities.model.FCA;
 
 public class SytnerFooterComp extends BasePage {
 
@@ -69,5 +71,21 @@ public class SytnerFooterComp extends BasePage {
     public String getHrefAttributePolicyLink(String policyLink) {
         waitForElementVisible(DYNAMIC_POLICY_LINKS, policyLink);
         return getAttributeValue(DYNAMIC_POLICY_LINKS, "href", policyLink);
+    }
+
+    public String getHrefAttributeFCA() {
+        FCA fca = DataController.getFCAAllPage();
+        waitForElementVisible(DYNAMIC_POLICY_LINKS, fca.getName());
+        return getAttributeValue(DYNAMIC_POLICY_LINKS, "href", fca.getName());
+    }
+
+    public String getFCASlugByPageName(String childBrand) {
+        FCA.SlugValue[] slugValues = DataController.getFCAAllPage().getSlugs();
+        for (FCA.SlugValue slugValue : slugValues) {
+            if(slugValue.getPage().equalsIgnoreCase(childBrand)){
+                return slugValue.getValue();
+            }
+        }
+        return null;
     }
 }

@@ -42,7 +42,14 @@ public interface GlobalContants extends Config {
     String BRAND_MENU_LINKS_HEADER_DATA_JSON = TEST_RESOURCES.concat("BrandMenuLinks.json");
     String FOOTER_LINKS =  TEST_RESOURCES.concat("FooterLinks.json");
     String POLICY_LINKS =  TEST_RESOURCES.concat("PolicyLinks.json");
+    String FCA_LINKS =  TEST_RESOURCES.concat("FCA.json");
     String SOCIAL_NETWORKS = TEST_RESOURCES.concat("SocialNetworks.json");
+
+    String SYTNER_LOCATION = "Reg. Office: 2 Penman Way, Grove Park, Leicester LE19 1ST\n" +
+            "Registered in England. Company Reg. No. 2883766\n" +
+            "FCA Reg. No 310540 | VAT Reg. No GB 610 6250 86";
+
+    String SYTNER_DISCLOSURE = "Sytner Group Limited is authorised and regulated by the FCA for Insurance distribution activities, under FRN 310540.";
 
     static String getAbsolutatePathByOS(String folderName) {
         return PROJECT_PATH.concat(FILE_SEPARATOR).concat(folderName).concat(FILE_SEPARATOR);

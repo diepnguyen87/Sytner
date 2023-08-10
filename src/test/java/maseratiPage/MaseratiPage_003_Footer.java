@@ -1,4 +1,4 @@
-package homePage;
+package maseratiPage;
 
 import commons.BaseTest;
 import commons.GlobalContants;
@@ -7,23 +7,29 @@ import data.DataController;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+import pages.Maserati.MaseratiPage;
+import pages.PageGeneratorManager;
 import utilities.model.FooterLink;
 import utilities.model.PolicyLink;
 import utilities.model.SocialLink;
 
 import java.util.Arrays;
 
-public class HomePage_004_Footer extends BaseTest {
+public class MaseratiPage_003_Footer extends BaseTest {
 
     @BeforeClass
-    public void beforeClass() {
-        sytnerFooterComp = homePage.getSytnerFooterComp();
+    public void beforeClass(){
+        homePage.getSytnerHeaderComp().openBrandPageByName(childBrand);
+        maseratiPage = PageGeneratorManager.getMaseratiPage(driver);
+        sytnerFooterComp = maseratiPage.getSytnerFooterComp();
+        maseratiURL = appURL.concat(DataController.getSlugByBrandName(childBrand));
     }
 
-    public void Footer_001_SocialNetworks(SocialLink.SocialNetwork socialNetwork) {
+    @Test
+    public void Footer_001_SocialNetworks() {
         sytnerFooterComp.moveToSocialNetwork();
 
-        SocialLink.SocialNetwork[] socialNetworks = DataController.socialNetworkDataSetByPage("Home");
+        SocialLink.SocialNetwork[] socialNetworks = DataController.socialNetworkDataSetByPage(childBrand);
         for (SocialLink.SocialNetwork network : socialNetworks) {
             String name = network.getName();
             Assert.assertEquals(sytnerFooterComp.getTargetAttributeSocialNetwork(name), "_blank");
@@ -33,7 +39,7 @@ public class HomePage_004_Footer extends BaseTest {
 
     @Test
     public void Footer_002_FooterLinks() {
-        FooterLink.FooterColumn[] footerColumns = DataController.footerLinkDataSetByPage("general");
+        FooterLink.FooterColumn[] footerColumns = DataController.footerLinkDataSetByPage(parentBrand);
 
         Arrays.stream(footerColumns).forEach(column -> {
             String columnName = column.getName();
@@ -44,6 +50,7 @@ public class HomePage_004_Footer extends BaseTest {
                 Assert.assertTrue(sytnerFooterComp.isFooterLinkDisplayed(columnName, linkName));
                 Assert.assertEquals(sytnerFooterComp.getTargetAttributeFooterLink(columnName, linkName), "");
                 Assert.assertTrue(sytnerFooterComp.getHrefAttributeFooterLink(columnName, linkName).contains(appURL.concat(link.getSlug())));
+
             }
         });
     }
@@ -71,7 +78,10 @@ public class HomePage_004_Footer extends BaseTest {
         Assert.assertEquals(sytnerFooterComp.getHrefAttributeFCA(), appURL.concat(sytnerFooterComp.getFCASlugByPageName(childBrand)));
     }
 
+
     private SytnerFooterComp sytnerFooterComp;
-    private String parentBrand = "Home";
-    private String childBrand = "Home";
+    private MaseratiPage maseratiPage;
+    private String maseratiURL;
+    private String parentBrand = "Maserati";
+    private String childBrand = "Maserati";
 }

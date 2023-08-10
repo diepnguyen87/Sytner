@@ -1,16 +1,17 @@
 package alpinaPage;
 
 import commons.BaseTest;
+import commons.GlobalContants;
 import components.global.SytnerFooterComp;
-import components.global.SytnerHeaderComp;
 import data.DataController;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import pages.PageGeneratorManager;
-import pages.SearchPage;
 import pages.bmw.AlpinaPage;
-import utilities.model.*;
+import utilities.model.FooterLink;
+import utilities.model.PolicyLink;
+import utilities.model.SocialLink;
 
 import java.util.Arrays;
 
@@ -28,7 +29,7 @@ public class AlpinaPage_003_Footer extends BaseTest {
     public void Footer_001_SocialNetworks() {
         sytnerFooterComp.moveToSocialNetwork();
 
-        SocialLink.SocialNetwork[] socialNetworks = DataController.socialNetworkDataSetByPage("Alpina");
+        SocialLink.SocialNetwork[] socialNetworks = DataController.socialNetworkDataSetByPage(childBrand);
         for (SocialLink.SocialNetwork network : socialNetworks) {
             String name = network.getName();
             Assert.assertEquals(sytnerFooterComp.getTargetAttributeSocialNetwork(name), "_blank");
@@ -48,30 +49,19 @@ public class AlpinaPage_003_Footer extends BaseTest {
                 String linkName = link.getName();
                 Assert.assertTrue(sytnerFooterComp.isFooterLinkDisplayed(columnName, linkName));
                 Assert.assertEquals(sytnerFooterComp.getTargetAttributeFooterLink(columnName, linkName), "");
-                String a = sytnerFooterComp.getHrefAttributeFooterLink(columnName, linkName);
-                String b = appURL.concat(link.getSlug());
-                boolean c = a.contains(b);
-                if(c == false){
-                    System.out.println("stop");
-                }
                 Assert.assertTrue(sytnerFooterComp.getHrefAttributeFooterLink(columnName, linkName).contains(appURL.concat(link.getSlug())));
-
             }
         });
     }
 
     @Test
     public void Footer_003_OurLocation() {
-        String expectedLocation = "Reg. Office: 2 Penman Way, Grove Park, Leicester LE19 1ST\n" +
-                "Registered in England. Company Reg. No. 2883766\n" +
-                "FCA Reg. No 310540 | VAT Reg. No GB 610 6250 86";
-        Assert.assertEquals(sytnerFooterComp.getLocation(), expectedLocation);
+        Assert.assertEquals(sytnerFooterComp.getLocation(), GlobalContants.SYTNER_LOCATION);
     }
 
     @Test
     public void Footer_004_Disclosure() {
-        String expectedDisclosure = "Sytner Group Limited is authorised and regulated by the FCA for Insurance distribution activities, under FRN 310540.";
-        Assert.assertEquals(sytnerFooterComp.getDisclosure(), expectedDisclosure);
+        Assert.assertEquals(sytnerFooterComp.getDisclosure(), GlobalContants.SYTNER_DISCLOSURE);
     }
 
     @Test
@@ -84,6 +74,7 @@ public class AlpinaPage_003_Footer extends BaseTest {
         Assert.assertTrue(sytnerFooterComp.isPolicyLinkDisplayed(policy.getName()));
         Assert.assertEquals(sytnerFooterComp.getTargetAttributePolicyLink(policy.getName()), "");
         Assert.assertEquals(sytnerFooterComp.getHrefAttributePolicyLink(policy.getName()), appURL.concat(policy.getSlug()));
+        Assert.assertEquals(sytnerFooterComp.getHrefAttributeFCA(), appURL.concat(sytnerFooterComp.getFCASlugByPageName(childBrand)));
     }
 
 
