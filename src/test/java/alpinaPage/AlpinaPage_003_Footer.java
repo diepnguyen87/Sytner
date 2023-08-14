@@ -74,7 +74,7 @@ public class AlpinaPage_003_Footer extends BaseTest {
         Assert.assertTrue(sytnerFooterComp.isPolicyLinkDisplayed(policy.getName()));
         Assert.assertEquals(sytnerFooterComp.getTargetAttributePolicyLink(policy.getName()), "");
         Assert.assertEquals(sytnerFooterComp.getHrefAttributePolicyLink(policy.getName()), appURL.concat(policy.getSlug()));
-        Assert.assertEquals(sytnerFooterComp.getHrefAttributeFCA(), appURL.concat(sytnerFooterComp.getFCASlugByPageName(childBrand)));
+        Assert.assertEquals(sytnerFooterComp.getHrefAttributeFCA(), appURL.concat(sytnerFooterComp.getFCASlugByPageName("General")));
     }
 
 

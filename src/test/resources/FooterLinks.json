@@ -40,27 +40,27 @@
         "links": [
           {
             "name": "Our Locations",
-            "slug": ""
+            "slug": "dealerships"
           },
           {
             "name": "About Us",
-            "slug": ""
+            "slug": "about-us"
           },
           {
             "name": "Careers",
-            "slug": ""
+            "slug": "careers"
           },
           {
             "name": "U.S. Dealerships",
-            "slug": ""
+            "slug": "us-dealerships"
           },
           {
             "name": "Sustainability",
-            "slug": ""
+            "slug": "sustainability"
           },
           {
             "name": "Goodwood 2023",
-            "slug": ""
+            "slug": "goodwood-2023/"
           }
         ]
       },
@@ -69,95 +69,95 @@
         "links": [
           {
             "name": "Aston Martin",
-            "slug": ""
+            "slug": "aston-martin"
           },
           {
             "name": "Audi",
-            "slug": ""
+            "slug": "audi/"
           },
           {
             "name": "Bentley",
-            "slug": ""
+            "slug": "bentley"
           },
           {
             "name": "BMW",
-            "slug": ""
+            "slug": "bmw/"
           },
           {
             "name": "Bugatti",
-            "slug": ""
+            "slug": "bugatti"
           },
           {
             "name": "Ferrari",
-            "slug": ""
+            "slug": "ferrari/"
           },
           {
             "name": "Jaguar",
-            "slug": ""
+            "slug": "jaguar"
           },
           {
             "name": "Lamborghini",
-            "slug": ""
+            "slug": "lamborghini"
           },
           {
             "name": "Land Rover",
-            "slug": ""
+            "slug": "landrover"
           },
           {
             "name": "Maserati",
-            "slug": ""
+            "slug": "maserati"
           },
           {
             "name": "McLaren",
-            "slug": ""
+            "slug": "mclaren"
           },
           {
             "name": "Mercedes-Benz",
-            "slug": ""
+            "slug": "mercedes-benz"
           },
           {
             "name": "MINI",
-            "slug": ""
+            "slug": "mini"
           },
           {
             "name": "Pagani",
-            "slug": ""
+            "slug": "pagani"
           },
           {
             "name": "Porsche",
-            "slug": ""
+            "slug": "porsche/"
           },
           {
             "name": "Rolls Royce",
-            "slug": ""
+            "slug": "rolls-royce"
           },
           {
             "name": "SEAT",
-            "slug": ""
+            "slug": "seat"
           },
           {
             "name": "Škoda",
-            "slug": ""
+            "slug": "skoda"
           },
           {
             "name": "smart",
-            "slug": ""
+            "slug": "smart"
           },
           {
             "name": "Volkswagen",
-            "slug": ""
+            "slug": "volkswagen"
           },
           {
             "name": "Volkswagen Commercial",
-            "slug": ""
+            "slug": "volkswagen-commercial"
           },
           {
             "name": "Sytner Select",
-            "slug": ""
+            "slug": "sytner-select"
           },
           {
             "name": "CarShop",
-            "slug": ""
+            "slug": "carshop"
           }
         ]
       }

@@ -7,8 +7,7 @@ import data.DataController;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import pages.Maserati.MaseratiPage;
-import pages.PageGeneratorManager;
+import pages.SearchPage;
 import utilities.model.FooterLink;
 import utilities.model.PolicyLink;
 import utilities.model.SocialLink;
@@ -19,10 +18,9 @@ public class SearchPage_003_Footer extends BaseTest {
 
     @BeforeClass
     public void beforeClass(){
-        homePage.getSytnerHeaderComp().openBrandPageByName(childBrand);
-        maseratiPage = PageGeneratorManager.getMaseratiPage(driver);
-        sytnerFooterComp = maseratiPage.getSytnerFooterComp();
-        maseratiURL = appURL.concat(DataController.getSlugByBrandName(childBrand));
+        searchPage = homePage.clickSearchButton();
+        searchURL = appURL.concat("search");
+        sytnerFooterComp = searchPage.getSytnerFooterComp();
     }
 
     @Test
@@ -39,7 +37,7 @@ public class SearchPage_003_Footer extends BaseTest {
 
     @Test
     public void Footer_002_FooterLinks() {
-        FooterLink.FooterColumn[] footerColumns = DataController.footerLinkDataSetByPage(parentBrand);
+        FooterLink.FooterColumn[] footerColumns = DataController.footerLinkDataSetByPage("general");
 
         Arrays.stream(footerColumns).forEach(column -> {
             String columnName = column.getName();
@@ -75,13 +73,14 @@ public class SearchPage_003_Footer extends BaseTest {
         Assert.assertTrue(sytnerFooterComp.isPolicyLinkDisplayed(policy.getName()));
         Assert.assertEquals(sytnerFooterComp.getTargetAttributePolicyLink(policy.getName()), "");
         Assert.assertEquals(sytnerFooterComp.getHrefAttributePolicyLink(policy.getName()), appURL.concat(policy.getSlug()));
-        Assert.assertEquals(sytnerFooterComp.getHrefAttributeFCA(), appURL.concat(sytnerFooterComp.getFCASlugByPageName(childBrand)));
+        Assert.assertEquals(sytnerFooterComp.getHrefAttributeFCA(), appURL.concat(sytnerFooterComp.getFCASlugByPageName("General")));
     }
 
 
     private SytnerFooterComp sytnerFooterComp;
-    private MaseratiPage maseratiPage;
-    private String maseratiURL;
-    private String parentBrand = "Maserati";
-    private String childBrand = "Maserati";
+    private SearchPage searchPage;
+    private String searchURL;
+
+    private String parentBrand = "Search";
+    private String childBrand = "Search";
 }

@@ -2,11 +2,7 @@
   "name": "FCA Commission Status Disclosure & Terms",
   "slugs": [
     {
-      "page": "Home",
-      "value": "fca-information"
-    },
-    {
-      "page": "Alpina",
+      "page": "General",
       "value": "fca-information"
     },
     {

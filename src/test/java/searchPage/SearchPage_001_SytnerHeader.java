@@ -2,7 +2,6 @@ package searchPage;
 
 import commons.BaseTest;
 import components.global.SytnerHeaderComp;
-import data.DataController;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -14,7 +13,7 @@ import utilities.model.Offer;
 
 import java.util.Arrays;
 
-public class SearchPage_002_SytnerHeader extends BaseTest {
+public class SearchPage_001_SytnerHeader extends BaseTest {
 
     @BeforeClass
     public void beforeClass(){
@@ -100,7 +99,7 @@ public class SearchPage_002_SytnerHeader extends BaseTest {
     }
 
     @Test
-    public void SytnerHeader_009_OutsideViewport_WhenPageScrollDown() {
+    public void SytnerHeader_009_InsideViewport_WhenPageScrollDown() {
         searchPage.moveToBottomPage();
         Assert.assertTrue(sytnerHeaderComp.isSytnerHeaderInsideViewport());
     }

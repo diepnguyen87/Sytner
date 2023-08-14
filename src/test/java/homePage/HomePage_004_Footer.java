@@ -68,7 +68,7 @@ public class HomePage_004_Footer extends BaseTest {
         Assert.assertTrue(sytnerFooterComp.isPolicyLinkDisplayed(policy.getName()));
         Assert.assertEquals(sytnerFooterComp.getTargetAttributePolicyLink(policy.getName()), "");
         Assert.assertEquals(sytnerFooterComp.getHrefAttributePolicyLink(policy.getName()), appURL.concat(policy.getSlug()));
-        Assert.assertEquals(sytnerFooterComp.getHrefAttributeFCA(), appURL.concat(sytnerFooterComp.getFCASlugByPageName(childBrand)));
+        Assert.assertEquals(sytnerFooterComp.getHrefAttributeFCA(), appURL.concat(sytnerFooterComp.getFCASlugByPageName("General")));
     }
 
     private SytnerFooterComp sytnerFooterComp;
