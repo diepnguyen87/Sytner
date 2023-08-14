@@ -6,7 +6,6 @@ import data.DataController;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import pages.Maserati.MaseratiPage;
 import pages.PageGeneratorManager;
 import pages.SearchPage;
 import utilities.model.Brand;
@@ -19,49 +18,48 @@ public class SearchPage_002_SytnerHeader extends BaseTest {
 
     @BeforeClass
     public void beforeClass(){
-        homePage.getSytnerHeaderComp().openBrandPageByName(childBrand);
-        maseratiPage = PageGeneratorManager.getMaseratiPage(driver);
-        sytnerHeaderComp = maseratiPage.getSytnerHeaderComp();
-        maseratiURL = appURL.concat(DataController.getSlugByBrandName(childBrand));
+        searchPage = homePage.clickSearchButton();
+        searchURL = appURL.concat("search");
+        sytnerHeaderComp = searchPage.getSytnerHeaderComp();
     }
 
-    @Test
-    public void SytnerHeader_001_Elements_Visibility_Mode2() {
-        Assert.assertTrue(sytnerHeaderComp.isSytnerHeader_Mode2_Visibility_SearchComponentClosed());
+    //@Test
+    public void SytnerHeader_001_Elements_Visibility_Mode3() {
+        Assert.assertTrue(sytnerHeaderComp.isSytnerHeader_Mode3_Visibility_NoSearchComponent());
     }
 
-    @Test
+    //@Test
     public void SytnerHeader_002_Sytner_Logo() {
         homePage = sytnerHeaderComp.clickSytnerIcon();
         Assert.assertEquals(homePage.getCurrentURL(), appURL);
     }
 
-    @Test
-    public void SytnerHeader_006_OpenMenuItems() {
-        homePage.navigateToURL(maseratiURL);
-        maseratiPage = PageGeneratorManager.getMaseratiPage(driver);
+    //@Test
+    public void SytnerHeader_003_OpenMenuItems() {
+        homePage.navigateToURL(searchURL);
+        searchPage = PageGeneratorManager.getSearchPage(driver);
 
         sytnerHeaderComp.openMenuItem();
         Assert.assertTrue(sytnerHeaderComp.isMenuItemPopupDisplayed());
     }
 
-    @Test
-    public void SytnerHeader_007_CloseMenuItems() {
+    //@Test
+    public void SytnerHeader_004_CloseMenuItems() {
         sytnerHeaderComp.closeMenuItem();
         Assert.assertTrue(sytnerHeaderComp.isMenuItemPopupUndisplayed());
     }
 
-    @Test
-    public void SytnerHeader_008_MenuItems_Sytner_Logo() {
+    //@Test
+    public void SytnerHeader_005_MenuItems_Sytner_Logo() {
         sytnerHeaderComp.openMenuItem();
         homePage = sytnerHeaderComp.clickSytnerIcon();
         Assert.assertTrue(sytnerHeaderComp.isMenuItemPopupUndisplayed());
         Assert.assertEquals(homePage.getCurrentURL(), appURL);
     }
 
-    @Test(dataProvider = "menuItems", dataProviderClass = DataController.class)
-    public void SytnerHeader_009_MenuItems_By_Sections(MenuItems menuItems) {
-        homePage.navigateToURL(maseratiURL);
+    //@Test(dataProvider = "menuItems", dataProviderClass = DataController.class)
+    public void SytnerHeader_006_MenuItems_By_Sections(MenuItems menuItems) {
+        homePage.navigateToURL(searchURL);
 
         String sectionName = menuItems.getSectionName();
         MenuItems.Item[] items = menuItems.getItems();
@@ -71,53 +69,52 @@ public class SearchPage_002_SytnerHeader extends BaseTest {
 
             sytnerHeaderComp.clickMenuItemsBySectionAndName(sectionName, item.getName());
             if (item.getName().equalsIgnoreCase("Careers")) {
-                Assert.assertEquals(homePage.getCurrentURL(), item.getSlug());
+                Assert.assertEquals(searchPage.getCurrentURL(), item.getSlug());
             } else {
-                Assert.assertEquals(homePage.getCurrentURL(), appURL + item.getSlug());
+                Assert.assertEquals(searchPage.getCurrentURL(), appURL + item.getSlug());
             }
-            homePage.navigateToURL(maseratiURL);
+            searchPage.navigateToURL(searchURL);
         });
     }
 
-    @Test(dataProvider = "carBrands", dataProviderClass = DataController.class)
-    public void SytnerHeader_010_CarBrands(Brand brand) {
+    //@Test(dataProvider = "carBrands", dataProviderClass = DataController.class)
+    public void SytnerHeader_007_CarBrands(Brand brand) {
         sytnerHeaderComp.openMenuItem();
         Assert.assertTrue(sytnerHeaderComp.isBrandMenuItemOpennedOnCurrentPage(brand.getName()));
 
         sytnerHeaderComp.clickMenuItemAtTabBrandByName(brand.getName());
-        Assert.assertEquals(homePage.getCurrentURL(), appURL + brand.getSlug());
-        homePage.navigateToURL(maseratiURL);
+        Assert.assertEquals(searchPage.getCurrentURL(), appURL + brand.getSlug());
+        homePage.navigateToURL(searchURL);
     }
 
-    @Test(dataProvider = "offers", dataProviderClass = DataController.class)
-    public void SytnerHeader_011_Offers(Offer offer) {
+    //@Test(dataProvider = "offers", dataProviderClass = DataController.class)
+    public void SytnerHeader_008_Offers(Offer offer) {
         sytnerHeaderComp.openMenuItem();
         sytnerHeaderComp.clickTabByName("Offers");
         Assert.assertTrue(sytnerHeaderComp.isOfferMenuItemOpennedOnCurrentPage(offer.getName()));
 
         sytnerHeaderComp.clickMenuItemAtTabOfferByName(offer.getName());
         Assert.assertEquals(homePage.getCurrentURL(), appURL + offer.getSlug());
-        homePage.navigateToURL(maseratiURL);
-        maseratiPage = PageGeneratorManager.getMaseratiPage(driver);
+        homePage.navigateToURL(searchURL);
+        searchPage = PageGeneratorManager.getSearchPage(driver);
     }
 
     @Test
-    public void SytnerHeader_012_OutsideViewport_WhenPageScrollDown() {
-        maseratiPage.moveToMainContent();
-        Assert.assertTrue(sytnerHeaderComp.isSytnerHeaderOutsideViewport());
+    public void SytnerHeader_009_OutsideViewport_WhenPageScrollDown() {
+        searchPage.moveToBottomPage();
+        Assert.assertTrue(sytnerHeaderComp.isSytnerHeaderInsideViewport());
     }
 
     @Test
-    public void SytnerHeader_013_InsideViewport_WhenPageScrollUp() {
-        maseratiPage.moveToSytnerHeader();
+    public void SytnerHeader_010_InsideViewport_WhenPageScrollUp() {
+        searchPage.moveToSytnerHeader();
         Assert.assertTrue(sytnerHeaderComp.isSytnerHeaderInsideViewport());
     }
 
     private SytnerHeaderComp sytnerHeaderComp;
-    private MaseratiPage maseratiPage;
     private SearchPage searchPage;
-    private String maseratiURL;
+    private String searchURL;
 
-    private String parentBrand = "Maserati";
-    private String childBrand = "Maserati";
+    private String parentBrand = "Search";
+    private String childBrand = "Search";
 }

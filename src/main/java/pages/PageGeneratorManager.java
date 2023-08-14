@@ -34,6 +34,9 @@ public class PageGeneratorManager {
         return new SearchPage(driver);
     }
 
+    public static BrandPage getBrandPage(WebDriver driver){
+        return new BrandPage(driver);
+    }
     public static AlpinaPage getAlpinaPage(WebDriver driver){
         return new AlpinaPage(driver);
     }

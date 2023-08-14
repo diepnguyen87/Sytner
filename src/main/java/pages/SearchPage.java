@@ -19,4 +19,8 @@ public class SearchPage extends BasePage {
         waitForElementVisible(SearchPageUI.SEARCH_TEXTBOX);
         return getAttributeValue(SearchPageUI.SEARCH_TEXTBOX, "value");
     }
+
+    public void moveToBottomPage() {
+        scrollToBottomPage();
+    }
 }

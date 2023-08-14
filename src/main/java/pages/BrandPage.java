@@ -1,10 +1,8 @@
 package pages;
 
-import UI.page.AlpinaPageUI;
 import UI.page.BrandPageUI;
 import commons.BasePage;
 import components.global.BrandHeaderComp;
-import components.global.SytnerHeaderComp;
 import org.openqa.selenium.WebDriver;
 
 public class BrandPage extends BasePage {
@@ -33,12 +31,4 @@ public class BrandPage extends BasePage {
         scrollToElementOnDown(BrandPageUI.RANGE_TITLE);
         sleepInSecond(1);
     }
-
-    public void moveToSytnerHeader(){
-        waitForElementVisible(SytnerHeaderComp.SYTNER_HEADER);
-        scrollToElementOnTop(SytnerHeaderComp.SYTNER_HEADER);
-        sleepInSecond(1);
-    }
-
-
 }

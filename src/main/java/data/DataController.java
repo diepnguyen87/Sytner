@@ -38,13 +38,6 @@ public class DataController {
         if (brandData == null) {
             brandData = DataObjectBuilder.buildDataObject(GlobalContants.CAR_BRANDS_DATA_JSON, Brand[].class);
         }
-     /*   return Arrays.stream(brandData).map(brand -> {
-            String result = null;
-            if (brand.getName().equalsIgnoreCase(brandName)) {
-                result = brand.getSlug();
-            }
-            return result;
-        }).collect(Collectors.toList()).get(0);*/
 
         return Arrays.stream(brandData).filter(brand -> brand.getName().equalsIgnoreCase(brandName)).limit(1).collect(Collectors.toList()).get(0).getSlug();
     }

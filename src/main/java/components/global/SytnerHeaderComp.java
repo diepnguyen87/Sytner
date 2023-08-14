@@ -1,28 +1,29 @@
 package components.global;
 
 import commons.BasePage;
+import pages.BrandPage;
 import pages.HomePage;
 import pages.PageGeneratorManager;
 import pages.SearchPage;
 
 public class SytnerHeaderComp extends BasePage {
 
-    public String SYTNER_HEADER_CENTERED = "xpath=//img[@alt='Sytner Group Logo']/ancestor::div[contains(@class, 'navbar-header--centered')]";
+    public static String SYTNER_HEADER_CENTERED = "xpath=//img[@alt='Sytner Group Logo']/ancestor::div[contains(@class, 'navbar-header--centered')]";
     public static String SYTNER_HEADER = "xpath=//img[@alt='Sytner Group Logo']/ancestor::div[contains(@class, 'Navbar_sui-navbar-fixed')]";
-    public String SYTNER_LOGO = "xpath=//img[@alt='Sytner Group Logo']/parent::a";
-    public String SEARCH_ICON = "xpath=//button[@title='Open search' and contains(@id, 'desktop')]";
-    public String SEARCH_INPUT_ICON = "xpath=//div[contains(@id, 'search-desktop') and @aria-hidden='false']//label[contains(@id,'search-input-desktop')]/following-sibling::*[name()='svg']";
-    public String SEARCH_TEXTBOX = "css=input[id*='search-input-desktop']";
-    public String SEARCH_BUTTON = "css=button[id*='search-input-desktop']";
-    public String SEARCH_CLOSE_ICON = "css=button[title='Close search'][id*='desktop']";
-    public String LOCATION_ICON = "css=a[title='Locations']";
-    public String OPEN_MENU_ITEM = "xpath=//div[contains(@class, 'navbar-header')]/button[@title='Open Menu']";
-    public String CLOSE_MENU_ITEM = "xpath=//div[contains(@class, 'navbar-header')]/button[@title='Close']";
-    public String POPUP_MENU_ITEMS = "xpath=//header[contains(@class,'Navbar_is-open')]";
-    public String DYNAMIC_TAB_BY_NAME = "xpath=//button[@role='tab' and text()='%s']";
-    public String DYNAMIC_MENU_ITEMS_BRAND_BY_NAME = "xpath=//button[@role='tab' and text()='Our Brands' and @aria-selected='true']/ancestor::ul[@role='tablist']/following-sibling::div//a[text()='%s']";
-    public String DYNAMIC_MENU_ITEMS_OFFER_BY_NAME = "xpath=//button[@role='tab' and text()='Offers' and @aria-selected='true']/ancestor::ul[@role='tablist']/following-sibling::div//a[text()='%s']";
-    public String DYNAMIC_MENU_ITEM_BY_SECTION_NAME = "xpath=//h6[text()='%s']/following-sibling::ul//a[text()='%s']";
+    public static String SYTNER_LOGO = "xpath=//img[@alt='Sytner Group Logo']/parent::a";
+    public static String SEARCH_ICON = "xpath=//button[@title='Open search' and contains(@id, 'desktop')]";
+    public static String SEARCH_INPUT_ICON = "xpath=//div[contains(@id, 'search-desktop') and @aria-hidden='false']//label[contains(@id,'search-input-desktop')]/following-sibling::*[name()='svg']";
+    public static String SEARCH_TEXTBOX = "css=input[id*='search-input-desktop']";
+    public static String SEARCH_BUTTON = "css=button[id*='search-input-desktop']";
+    public static String SEARCH_CLOSE_ICON = "css=button[title='Close search'][id*='desktop']";
+    public static String LOCATION_ICON = "css=a[title='Locations']";
+    public static String OPEN_MENU_ITEM = "xpath=//div[contains(@class, 'navbar-header')]/button[@title='Open Menu']";
+    public static String CLOSE_MENU_ITEM = "xpath=//div[contains(@class, 'navbar-header')]/button[@title='Close']";
+    public static String POPUP_MENU_ITEMS = "xpath=//header[contains(@class,'Navbar_is-open')]";
+    public static String DYNAMIC_TAB_BY_NAME = "xpath=//button[@role='tab' and text()='%s']";
+    public static String DYNAMIC_MENU_ITEMS_BRAND_BY_NAME = "xpath=//button[@role='tab' and text()='Our Brands' and @aria-selected='true']/ancestor::ul[@role='tablist']/following-sibling::div//a[text()='%s']";
+    public static String DYNAMIC_MENU_ITEMS_OFFER_BY_NAME = "xpath=//button[@role='tab' and text()='Offers' and @aria-selected='true']/ancestor::ul[@role='tablist']/following-sibling::div//a[text()='%s']";
+    public static String DYNAMIC_MENU_ITEM_BY_SECTION_NAME = "xpath=//h6[text()='%s']/following-sibling::ul//a[text()='%s']";
 
     public boolean isSytnerLogoDisplayed() {
         waitForElementVisible(SYTNER_LOGO);
@@ -64,10 +65,11 @@ public class SytnerHeaderComp extends BasePage {
         clickToElement(DYNAMIC_TAB_BY_NAME, tabName);
     }
 
-    public void clickMenuItemAtTabBrandByName(String brandOfferName) {
+    public BrandPage clickMenuItemAtTabBrandByName(String brandOfferName) {
         waitForElementClickable(DYNAMIC_MENU_ITEMS_BRAND_BY_NAME, brandOfferName);
         clickToElement(DYNAMIC_MENU_ITEMS_BRAND_BY_NAME, brandOfferName);
         sleepInSecond(5);
+        return PageGeneratorManager.getBrandPage(getDriver());
     }
 
     public void clickMenuItemAtTabOfferByName(String brandOfferName) {
@@ -89,6 +91,10 @@ public class SytnerHeaderComp extends BasePage {
     public boolean isSearchIconDisplayed() {
         waitForElementVisible(SEARCH_ICON);
         return isElementDisplayedInDOM(SEARCH_ICON);
+    }
+
+    public boolean isSearchIconUnDisplayed() {
+       return isElementUnDisplayed(SEARCH_ICON);
     }
 
     public boolean isLocationIconUndisplayed() {
@@ -243,5 +249,13 @@ public class SytnerHeaderComp extends BasePage {
 
     public boolean isSytnerHeaderInsideViewport() {
         return isElementInViewport(SYTNER_HEADER);
+    }
+
+    public boolean isSytnerHeader_Mode3_Visibility_NoSearchComponent() {
+        if (isSearchInputIconUndisplayed() && isSearchTextboxUndisplayed() && isSearchButtonUndisplayed() && isSearchCloseIconUndisplayed() && isSearchIconUnDisplayed() &&
+                isSytnerLogoDisplayed() && isLocationIconDisplayed() && isOpenMenuIconDisplayed() && isSytnerHeaderUncentered()) {
+            return true;
+        }
+        return false;
     }
 }

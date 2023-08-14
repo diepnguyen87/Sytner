@@ -132,6 +132,9 @@ public class AlpinaPage_001_SytnerHeader extends BaseTest {
 
     @Test
     public void SytnerHeader_012_OutsideViewport_WhenPageScrollDown() {
+    /*    alpinaPage.moveToMainContent();
+        Assert.assertTrue(sytnerHeaderComp.isSytnerHeaderOutsideViewport());
+*/
         alpinaPage.moveToMainContent();
         Assert.assertTrue(sytnerHeaderComp.isSytnerHeaderOutsideViewport());
     }

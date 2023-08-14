@@ -10,6 +10,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.io.*;
+import java.nio.charset.Charset;
 import java.time.Duration;
 import java.time.LocalTime;
 import java.util.List;
@@ -505,14 +507,44 @@ public class BasePage {
     }
 
     public boolean isElementInViewport(String locator, String... dynamicValues){
-        JavascriptExecutor jsExecutor = (JavascriptExecutor) getDriver();
-        WebElement element = getElement(locator, dynamicValues);
+
+     /*   String position = getAttributeValue(locator, "position", dynamicValues);
         boolean isInVerticalCriteria1 = (Boolean) jsExecutor.executeScript("return ((window.innerHeight) + (window.pageYOffset) > arguments[0].offsetTop)", element);
         boolean isInVerticalCriteria2 = (Boolean) jsExecutor.executeScript("return (window.pageYOffset < (arguments[0].offsetTop + arguments[0].offsetHeight))", element);
 
         boolean isInHorizontalCriteria1 = (Boolean) jsExecutor.executeScript("return (arguments[0].offsetLeft < window.innerWidth) ", element);
         boolean isInHorizontalCriteria2 = (Boolean) jsExecutor.executeScript("return ((arguments[0].offsetLeft + arguments[0].offsetWidth) < window.innerWidth) ", element);
-        return isInVerticalCriteria1 && isInVerticalCriteria2 && isInHorizontalCriteria1 && isInHorizontalCriteria2;
+        return isInVerticalCriteria1 && isInVerticalCriteria2 && isInHorizontalCriteria1 && isInHorizontalCriteria2;*/
+        boolean isElementInViewport = false;
+        try {
+            JavascriptExecutor jsExecutor = (JavascriptExecutor) getDriver();
+            WebElement element = getElement(locator, dynamicValues);
+            jsExecutor.executeScript("var addscript=window.document.createElement('script');addscript.type='text/javascript';addscript.src='D:\\HongDiep\\Others\\Sytner\\src\\test\\resources\\IsElementInViewport.js';document.getElementsByTagName('body')[0].appendChild(addscript);");
+
+
+            String script = getContentFile("D:\\HongDiep\\Others\\Sytner\\src\\test\\resources\\IsElementInViewport.js");
+            String a =  jsExecutor.executeScript("isVisibleInViewport()", element).toString();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return isElementInViewport;
+    }
+
+    public String getContentFile(String filePath) throws IOException {
+        Charset cs = Charset.forName("UTF-8");
+        FileInputStream stream = new FileInputStream(filePath);
+        try {
+            Reader reader = new BufferedReader(new InputStreamReader(stream, cs));
+            StringBuilder builder = new StringBuilder();
+            char[] buffer = new char[8192];
+            int read;
+            while ((read = reader.read(buffer, 0, buffer.length)) > 0) {
+                builder.append(buffer, 0, read);
+            }
+            return builder.toString();
+        } finally {
+            stream.close();
+        }
     }
 
     private static ThreadLocal<WebDriver> tDriver = new ThreadLocal<>();
@@ -534,5 +566,11 @@ public class BasePage {
             tSytnerFooter.set(new SytnerFooterComp());
         }
         return tSytnerFooter.get();
+    }
+
+    public void moveToSytnerHeader(){
+        waitForElementVisible(SytnerHeaderComp.SYTNER_HEADER);
+        scrollToElementOnTop(SytnerHeaderComp.SYTNER_HEADER);
+        sleepInSecond(1);
     }
 }
