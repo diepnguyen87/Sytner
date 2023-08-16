@@ -18,7 +18,7 @@
     <test name="Run on Chrome" >
         <parameter name="browserName" value="CHROME"/>
         <classes>
-            <class name="searchPage.SearchPage_003_Footer" />
+            <class name="searchPage.SearchPage_002_" />
         </classes>
     </test>
 

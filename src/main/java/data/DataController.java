@@ -106,4 +106,8 @@ public class DataController {
         return Arrays.stream(socialLinks).filter(page -> page.getPage().equalsIgnoreCase(pageName)).limit(1).collect(Collectors.toList()).get(0).getSocialNetworks();
     }
 
+    @DataProvider(name = "carMakes")
+    public static CarMake[] getCarMakeDataSet(){
+        return DataObjectBuilder.buildDataObject(GlobalContants.CAR_MAKES, CarMake[].class);
+    }
 }

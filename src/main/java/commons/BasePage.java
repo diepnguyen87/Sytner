@@ -19,14 +19,15 @@ import java.util.Set;
 
 public class BasePage {
 
-    public WebDriver getDriver(){
+    public WebDriver getDriver() {
         return tDriver.get();
     }
+
     public BasePage() {
     }
 
     public BasePage(WebDriver driver) {
-        if(tDriver.get() == null){
+        if (tDriver.get() == null) {
             tDriver.set(driver);
         }
     }
@@ -64,7 +65,7 @@ public class BasePage {
         return getDriver().getPageSource();
     }
 
-    public void navigateToURL(String URL){
+    public void navigateToURL(String URL) {
         getDriver().navigate().to(URL);
     }
 
@@ -112,6 +113,7 @@ public class BasePage {
     public String getWindowHandle() {
         return getDriver().getWindowHandle();
     }
+
     public Set<String> getWindowHandles() {
         return getDriver().getWindowHandles();
     }
@@ -315,7 +317,7 @@ public class BasePage {
         new Actions(getDriver()).contextClick(getElement(locator)).perform();
     }
 
-    public void openPageOnNewTab(String locator, String... dynamicValues){
+    public void openPageOnNewTab(String locator, String... dynamicValues) {
         new Actions(getDriver()).keyDown(Keys.LEFT_CONTROL).click(getElement(locator, dynamicValues)).keyUp(Keys.LEFT_CONTROL).build().perform();
     }
 
@@ -389,7 +391,7 @@ public class BasePage {
         ((JavascriptExecutor) getDriver()).executeScript("arguments[0].setAttribute('value', '" + value + "')", element);
     }
 
-    public String getAttributeInDOM(String locator, String attributeName) {
+    public String getAttributeByJS(String locator, String attributeName) {
         return (String) ((JavascriptExecutor) getDriver()).executeScript("return arguments[0].getAttribute('" + attributeName + "');", getElement(locator));
     }
 
@@ -506,7 +508,7 @@ public class BasePage {
         return currentURL;
     }
 
-    public boolean isElementInViewport(String locator, String... dynamicValues){
+    public boolean isElementInViewport(String locator, String... dynamicValues) {
 
      /*   String position = getAttributeValue(locator, "position", dynamicValues);
         boolean isInVerticalCriteria1 = (Boolean) jsExecutor.executeScript("return ((window.innerHeight) + (window.pageYOffset) > arguments[0].offsetTop)", element);
@@ -519,11 +521,12 @@ public class BasePage {
         try {
             JavascriptExecutor jsExecutor = (JavascriptExecutor) getDriver();
             WebElement element = getElement(locator, dynamicValues);
-            jsExecutor.executeScript("var addscript=window.document.createElement('script');addscript.type='text/javascript';addscript.src='D:\\HongDiep\\Others\\Sytner\\src\\test\\resources\\IsElementInViewport.js';document.getElementsByTagName('body')[0].appendChild(addscript);");
-
+            //jsExecutor.executeScript("var addscript=window.document.createElement('script');addscript.type='text/javascript';addscript.src='D:\\HongDiep\\Others\\Sytner\\src\\test\\resources\\IsElementInViewport.js';document.getElementsByTagName('body')[0].appendChild(addscript);");
 
             String script = getContentFile("D:\\HongDiep\\Others\\Sytner\\src\\test\\resources\\IsElementInViewport.js");
-            String a =  jsExecutor.executeScript("isVisibleInViewport()", element).toString();
+            script = jsExecutor.executeScript(script).toString();
+            isElementInViewport = Boolean.parseBoolean(jsExecutor.executeScript(script).toString());
+            System.out.println(isElementInViewport);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -554,21 +557,21 @@ public class BasePage {
     private static ThreadLocal<SytnerHeaderComp> tSytnerHeader = new ThreadLocal<>();
     private static ThreadLocal<SytnerFooterComp> tSytnerFooter = new ThreadLocal<>();
 
-    public SytnerHeaderComp getSytnerHeaderComp(){
-        if(tSytnerHeader.get() == null){
+    public SytnerHeaderComp getSytnerHeaderComp() {
+        if (tSytnerHeader.get() == null) {
             tSytnerHeader.set(new SytnerHeaderComp());
         }
         return tSytnerHeader.get();
     }
 
-    public SytnerFooterComp getSytnerFooterComp(){
-        if(tSytnerFooter.get() == null){
+    public SytnerFooterComp getSytnerFooterComp() {
+        if (tSytnerFooter.get() == null) {
             tSytnerFooter.set(new SytnerFooterComp());
         }
         return tSytnerFooter.get();
     }
 
-    public void moveToSytnerHeader(){
+    public void moveToSytnerHeader() {
         waitForElementVisible(SytnerHeaderComp.SYTNER_HEADER);
         scrollToElementOnTop(SytnerHeaderComp.SYTNER_HEADER);
         sleepInSecond(1);

@@ -1,11 +1,13 @@
 [
   {
     "name": "Alpina",
-    "slug": "bmw/alpina"
+    "slug": "bmw/alpina",
+    "quantity": 24
   },
   {
     "name": "AMG",
-    "slug": "mercedes-benz/range/mercedes-amg"
+    "slug": "mercedes-benz/range/mercedes-amg",
+    "quantity": 24
   },
   {
     "name": "Aston Martin",
