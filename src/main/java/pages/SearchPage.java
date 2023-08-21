@@ -7,7 +7,6 @@ import data.DataController;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.testng.Assert;
 import utilities.DataObjectBuilder;
 import utilities.model.CarMake;
 
@@ -79,6 +78,12 @@ public class SearchPage extends BasePage {
         clickToElement(SearchPageUI.MAKE_SHOW_MORE_BUTTON);
     }
 
+    public void clickShowLessButton() {
+        sleepInSecond(1);
+        waitForElementVisible(SearchPageUI.MAKE_SHOW_LESS_BUTTON);
+        clickToElement(SearchPageUI.MAKE_SHOW_LESS_BUTTON);
+    }
+
     public int getCurrentMakeOptionQuantity() {
         waitForElementVisible(SearchPageUI.ALL_MAKE_OPTION);
         return getElementSize(SearchPageUI.ALL_MAKE_OPTION);
@@ -123,7 +128,6 @@ public class SearchPage extends BasePage {
                         currentIndex = j + 1;
                     }
                 }
-
                 clickShowMoreButton();
                 cumulateMakeOptions += 20;
             } else {
@@ -167,5 +171,26 @@ public class SearchPage extends BasePage {
         }
 
         DataObjectBuilder.buildJsonFile(GlobalContants.TEST_RESOURCES.concat("CarMakes.json"), carMakes);
+    }
+
+    public int getSearchResultAll() {
+        int round = DataController.getCarMakeDataSet().length / 20;
+
+        for (int i = 0; i < round; i++) {
+            if (getElementSize(SearchPageUI.SEARCH_RESULT_SHOW_MORE) == 1) {
+                scrollToElementOnDown(SearchPageUI.SEARCH_RESULT_SHOW_MORE);
+                sleepInSecond(1);
+                clickToElement(SearchPageUI.SEARCH_RESULT_SHOW_MORE);
+                sleepInSecond(2);
+            } else {
+                break;
+            }
+        }
+        return getElementSize(SearchPageUI.SEARCH_RESULT_LIST);
+    }
+
+    public int getCurrentSearchResultList() {
+        waitForElementVisible(SearchPageUI.SEARCH_RESULT_LIST);
+        return getElementSize(SearchPageUI.SEARCH_RESULT_LIST);
     }
 }

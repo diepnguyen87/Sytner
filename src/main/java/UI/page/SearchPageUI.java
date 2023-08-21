@@ -18,9 +18,9 @@ public interface SearchPageUI {
     /* Category Make */
     String SEARCH_MAKE_TEXTBOX = "id=search-filters-filter-make-searchbox";
 
-    ////ul[@id='search-filters-filter-make']/li//input[@type='checkbox']/following-sibling::div
-
     /* Search Results */
     String SEARCH_TEXTBOX = "id=search-searchbox";
+    String SEARCH_RESULT_LIST = "css=section#search-results ul[class*='InfiniteHits_row']>li";
+    String SEARCH_RESULT_SHOW_MORE = "id=search-results-hits-load-more";
 
 }

@@ -1,17 +1,16 @@
-window.isVisibleInViewport = function () {
-    elem = $x("//img[@alt='Sytner Group Logo']/ancestor::div[contains(@class, 'Navbar_sui-navbar-fixed')]")
-    if (!elem || !(elem instanceof Element)) {
-        return false;
-    }
-    let vw = window.innerWidth;
-    let vh = window.innerHeight;
-    let ratio = 0;
-    let observer = new IntersectionObserver((entries) => {
-        let entry = entries[0];
-        ratio = entry.intersectionRatio;
-        });
-    observer.observe(elem);
-    observer.disconnect();
-    console.log("ratio: " + ratio);
-    return ratio > 0;
-};
+el = document.querySelector("div[class*='Navbar_sui-navbar-fixed']");
+
+// Special bonus for those using jQuery
+if (typeof jQuery === "function" && el instanceof jQuery) {
+    el = el[0];
+}
+
+var rect = el.getBoundingClientRect();
+
+return (
+    rect.top >= 0 &&
+    rect.left >= 0 &&
+    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) && /* or $(window).height() */
+    rect.right <= (window.innerWidth || document.documentElement.clientWidth) /* or $(window).width() */
+);
+

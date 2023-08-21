@@ -369,6 +369,10 @@ public class BasePage {
         sleepInSecond(5);
     }
 
+    public void scrollOnTopPage() {
+        ((JavascriptExecutor) getDriver()).executeScript("window.scrollTo(0, 0);");
+    }
+
     public void scrollToElementOnTop(String locator, String... dynamicValues) {
         ((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView(false);", getElement(locator, dynamicValues));
     }
@@ -508,29 +512,45 @@ public class BasePage {
         return currentURL;
     }
 
-    public boolean isElementInViewport(String locator, String... dynamicValues) {
+    public boolean isElementInViewport1(String locator, String... dynamicValues) {
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) getDriver();
+        WebElement element = getElement(locator, dynamicValues);
 
-     /*   String position = getAttributeValue(locator, "position", dynamicValues);
-        boolean isInVerticalCriteria1 = (Boolean) jsExecutor.executeScript("return ((window.innerHeight) + (window.pageYOffset) > arguments[0].offsetTop)", element);
-        boolean isInVerticalCriteria2 = (Boolean) jsExecutor.executeScript("return (window.pageYOffset < (arguments[0].offsetTop + arguments[0].offsetHeight))", element);
+        boolean isInBottomVertical = (Boolean) jsExecutor.executeScript("return ((window.innerHeight) + (window.pageYOffset) > arguments[0].offsetTop)", element);
+        boolean isInTopVertical = (Boolean) jsExecutor.executeScript("return (window.pageYOffset < (arguments[0].offsetTop + arguments[0].offsetHeight))", element);
 
-        boolean isInHorizontalCriteria1 = (Boolean) jsExecutor.executeScript("return (arguments[0].offsetLeft < window.innerWidth) ", element);
-        boolean isInHorizontalCriteria2 = (Boolean) jsExecutor.executeScript("return ((arguments[0].offsetLeft + arguments[0].offsetWidth) < window.innerWidth) ", element);
-        return isInVerticalCriteria1 && isInVerticalCriteria2 && isInHorizontalCriteria1 && isInHorizontalCriteria2;*/
+        boolean isInRightHorizontal = (Boolean) jsExecutor.executeScript("return (arguments[0].offsetLeft < window.innerWidth) ", element);
+        boolean isInLeftHorizontal = (Boolean) jsExecutor.executeScript("return ((arguments[0].offsetLeft + arguments[0].offsetWidth) < window.innerWidth) ", element);
+        return isInBottomVertical && isInTopVertical && isInRightHorizontal && isInLeftHorizontal;
+    }
+
+    public boolean isElementInViewport2(String locator, String... dynamicValues) {
         boolean isElementInViewport = false;
         try {
             JavascriptExecutor jsExecutor = (JavascriptExecutor) getDriver();
-            WebElement element = getElement(locator, dynamicValues);
-            //jsExecutor.executeScript("var addscript=window.document.createElement('script');addscript.type='text/javascript';addscript.src='D:\\HongDiep\\Others\\Sytner\\src\\test\\resources\\IsElementInViewport.js';document.getElementsByTagName('body')[0].appendChild(addscript);");
+            //WebElement element = getElement(locator, dynamicValues);
 
             String script = getContentFile("D:\\HongDiep\\Others\\Sytner\\src\\test\\resources\\IsElementInViewport.js");
-            script = jsExecutor.executeScript(script).toString();
-            isElementInViewport = Boolean.parseBoolean(jsExecutor.executeScript(script).toString());
-            System.out.println(isElementInViewport);
+            isElementInViewport = Boolean.parseBoolean(jsExecutor.executeScript("return " + script).toString());
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
         return isElementInViewport;
+    }
+
+    public Boolean isElementOnLeftTopMost(String locator, String... dynamicValues) {
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) getDriver();
+        WebElement targetElement = getElement(locator, dynamicValues);
+        int x = 0;
+        int y = 0;
+        WebElement leftTopMostElement = (WebElement) (jsExecutor.executeScript("return document.elementFromPoint (" + x + ", " + y + ");"));
+
+        String tartgetClass = targetElement.getAttribute("class");
+        String leftTopMostClass = leftTopMostElement.getAttribute("class");
+        if (leftTopMostClass.equalsIgnoreCase(tartgetClass)) {
+            return true;
+        }
+        return false;
     }
 
     public String getContentFile(String filePath) throws IOException {
@@ -571,9 +591,8 @@ public class BasePage {
         return tSytnerFooter.get();
     }
 
-    public void moveToSytnerHeader() {
-        waitForElementVisible(SytnerHeaderComp.SYTNER_HEADER);
-        scrollToElementOnTop(SytnerHeaderComp.SYTNER_HEADER);
+    public void moveOnTopPage() {
+        scrollOnTopPage();
         sleepInSecond(1);
     }
 }

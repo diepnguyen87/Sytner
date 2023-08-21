@@ -9,7 +9,8 @@ import pages.SearchPage;
 public class SytnerHeaderComp extends BasePage {
 
     public static String SYTNER_HEADER_CENTERED = "xpath=//img[@alt='Sytner Group Logo']/ancestor::div[contains(@class, 'navbar-header--centered')]";
-    public static String SYTNER_HEADER = "xpath=//img[@alt='Sytner Group Logo']/ancestor::div[contains(@class, 'Navbar_sui-navbar-fixed')]";
+    //public static String SYTNER_HEADER = "xpath=//img[@alt='Sytner Group Logo']/ancestor::div[contains(@class, 'Navbar_sui-navbar-fixed')]";
+    public static String SYTNER_HEADER = "css=div[class*='Navbar_sui-navbar-fixed'] div.Navbar_sui-navbar-header__VYaED";
     public static String SYTNER_LOGO = "xpath=//img[@alt='Sytner Group Logo']/parent::a";
     public static String SEARCH_ICON = "xpath=//button[@title='Open search' and contains(@id, 'desktop')]";
     public static String SEARCH_INPUT_ICON = "xpath=//div[contains(@id, 'search-desktop') and @aria-hidden='false']//label[contains(@id,'search-input-desktop')]/following-sibling::*[name()='svg']";
@@ -240,15 +241,14 @@ public class SytnerHeaderComp extends BasePage {
     }
 
     public boolean isSytnerHeaderOutsideViewport() {
-        if(isElementInViewport(SYTNER_HEADER)){
+        if(isElementInViewport2(SYTNER_HEADER)){
             return false;
         }
         return true;
     }
 
-
     public boolean isSytnerHeaderInsideViewport() {
-        return isElementInViewport(SYTNER_HEADER);
+        return isElementInViewport2(SYTNER_HEADER);
     }
 
     public boolean isSytnerHeader_Mode3_Visibility_NoSearchComponent() {
@@ -257,5 +257,9 @@ public class SytnerHeaderComp extends BasePage {
             return true;
         }
         return false;
+    }
+
+    public boolean isElmentOnLeftTopMostViewPort() {
+        return isElementOnLeftTopMost(SYTNER_HEADER);
     }
 }

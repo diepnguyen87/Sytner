@@ -101,13 +101,13 @@ public class SearchPage_001_SytnerHeader extends BaseTest {
     @Test
     public void SytnerHeader_009_InsideViewport_WhenPageScrollDown() {
         searchPage.moveToBottomPage();
-        Assert.assertTrue(sytnerHeaderComp.isSytnerHeaderInsideViewport());
+        Assert.assertTrue(sytnerHeaderComp.isElmentOnLeftTopMostViewPort());
     }
 
     @Test
     public void SytnerHeader_010_InsideViewport_WhenPageScrollUp() {
-        searchPage.moveToSytnerHeader();
-        Assert.assertTrue(sytnerHeaderComp.isSytnerHeaderInsideViewport());
+        searchPage.moveOnTopPage();
+        Assert.assertTrue(sytnerHeaderComp.isElmentOnLeftTopMostViewPort());
     }
 
     private SytnerHeaderComp sytnerHeaderComp;

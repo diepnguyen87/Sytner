@@ -16,6 +16,7 @@ public class DataController {
     private static Article[] articleData;
     private static Service[] serviceData;
     private static FeaturedNewCarOffers[] featuredNewCarOfferData;
+    private static CarMake[] carMakes;
 
     @DataProvider(name = "menuItems")
     public static MenuItems[] menuItemDataSet() {
@@ -108,6 +109,9 @@ public class DataController {
 
     @DataProvider(name = "carMakes")
     public static CarMake[] getCarMakeDataSet(){
-        return DataObjectBuilder.buildDataObject(GlobalContants.CAR_MAKES, CarMake[].class);
+        if(menuItemData == null){
+            carMakes = DataObjectBuilder.buildDataObject(GlobalContants.CAR_MAKES, CarMake[].class);
+        }
+        return carMakes;
     }
 }

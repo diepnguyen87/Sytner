@@ -138,7 +138,7 @@ public class MaseratiPage_001_SytnerHeader extends BaseTest {
 
     @Test
     public void SytnerHeader_013_InsideViewport_WhenPageScrollUp() {
-        maseratiPage.moveToSytnerHeader();
+        maseratiPage.moveOnTopPage();
         Assert.assertTrue(sytnerHeaderComp.isSytnerHeaderInsideViewport());
     }
 
