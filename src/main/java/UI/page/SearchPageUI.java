@@ -22,5 +22,6 @@ public interface SearchPageUI {
     String SEARCH_TEXTBOX = "id=search-searchbox";
     String SEARCH_RESULT_LIST = "css=section#search-results ul[class*='InfiniteHits_row']>li";
     String SEARCH_RESULT_SHOW_MORE = "id=search-results-hits-load-more";
+    String VERTICAL_CARD_PRICE = "css=div.VehicleCard_sui-vehicle-card__price__b_ttI";
 
 }

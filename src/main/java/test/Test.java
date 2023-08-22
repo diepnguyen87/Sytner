@@ -64,9 +64,12 @@ public class Test {
     }
 
     public static void main(String[] args) {
-        List<String> name = Arrays.asList("ball", "bat", "glove", "glove", "glove");
+      /*  List<String> name = Arrays.asList("ball", "bat", "glove", "glove", "glove");
         List<Integer> price = Arrays.asList(2, 3, 1, 1, 2);
         List<Integer> weight = Arrays.asList(2, 5, 1, 1, 1);
-        System.out.println(Test.numDuplicates(name, price, weight));
+        System.out.println(Test.numDuplicates(name, price, weight));*/
+
+        System.out.println(Integer.MAX_VALUE);
+        System.out.println(Integer.MAX_VALUE + 1);
     }
 }

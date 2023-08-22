@@ -18,7 +18,7 @@
     <test name="Run on Chrome" >
         <parameter name="browserName" value="CHROME"/>
         <classes>
-            <class name="alpinaPage.AlpinaPage_001_SytnerHeader" />
+            <class name="searchPage.SearchPage_002_MainContent_SearchResults" />
         </classes>
     </test>
 

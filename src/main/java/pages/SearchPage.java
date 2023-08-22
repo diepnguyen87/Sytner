@@ -11,12 +11,16 @@ import utilities.DataObjectBuilder;
 import utilities.model.CarMake;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class SearchPage extends BasePage {
 
     public SearchPage(WebDriver driver) {
         super(driver);
+        verticalCardPriceList = new ArrayList<>();
     }
 
     public boolean isFilterByKeywordDisplayed(String keyword) {
@@ -174,17 +178,23 @@ public class SearchPage extends BasePage {
     }
 
     public int getSearchResultAll() {
-        int round = DataController.getCarMakeDataSet().length / 20;
-
-        for (int i = 0; i < round; i++) {
+        while (true) {
             if (getElementSize(SearchPageUI.SEARCH_RESULT_SHOW_MORE) == 1) {
                 scrollToElementOnDown(SearchPageUI.SEARCH_RESULT_SHOW_MORE);
-                sleepInSecond(1);
+                sleepInSecond(3);
                 clickToElement(SearchPageUI.SEARCH_RESULT_SHOW_MORE);
                 sleepInSecond(2);
             } else {
                 break;
             }
+        }
+        for (WebElement element : getElements(SearchPageUI.VERTICAL_CARD_PRICE)) {
+            int startIndex = element.getText().indexOf('£') + 1;
+            String price = element.getText().substring(startIndex).replace(",", "");
+            if (price.contains(" + VAT")) {
+                 price = price.replace(" + VAT", "");
+            }
+            verticalCardPriceList.add(Integer.parseInt(price));
         }
         return getElementSize(SearchPageUI.SEARCH_RESULT_LIST);
     }
@@ -192,5 +202,28 @@ public class SearchPage extends BasePage {
     public int getCurrentSearchResultList() {
         waitForElementVisible(SearchPageUI.SEARCH_RESULT_LIST);
         return getElementSize(SearchPageUI.SEARCH_RESULT_LIST);
+    }
+
+    public List<Integer> getActualVerticalCardPriceList() {
+        if (verticalCardPriceList.size() == 0) {
+            getSearchResultAll();
+        }
+        return verticalCardPriceList;
+    }
+
+    private List<Integer> verticalCardPriceList;
+
+    public boolean isPriceSortedByDesc() {
+        List<Integer> actualPriceList = getActualVerticalCardPriceList();
+        List<Integer> expectedPriceList = actualPriceList.stream().sorted((o1, o2) -> o1.compareTo(02)).collect(Collectors.toList());
+
+        for (int i = 0; i < actualPriceList.size(); i++) {
+            int actual = actualPriceList.get(i);
+            int expected = expectedPriceList.get(i);
+            if (actual != expected) {
+                return false;
+            }
+        }
+        return true;
     }
 }

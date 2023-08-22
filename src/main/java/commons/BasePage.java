@@ -530,7 +530,7 @@ public class BasePage {
             JavascriptExecutor jsExecutor = (JavascriptExecutor) getDriver();
             //WebElement element = getElement(locator, dynamicValues);
 
-            String script = getContentFile("D:\\HongDiep\\Others\\Sytner\\src\\test\\resources\\IsElementInViewport.js");
+            String script = getContentFile(GlobalContants.TEST_RESOURCES.concat("IsElementInViewport.js"));
             isElementInViewport = Boolean.parseBoolean(jsExecutor.executeScript("return " + script).toString());
         } catch (IOException e) {
             throw new RuntimeException(e);
